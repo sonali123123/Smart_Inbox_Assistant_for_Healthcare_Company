@@ -8,7 +8,7 @@ An AI-powered pharmaceutical safety-monitoring and inbox triaging assistant. The
 
 ### 🎬 Live Demo Walkthrough
 
-<video src="sample-outputs/demo_walkthrough.mp4" controls width="100%">
+<video src="sample-outputs\demo_walkthrough.mp4" controls width="100%">
   Your browser does not support the video tag. <a href="sample-outputs/demo_walkthrough.mp4">Download the demo video</a>.
 </video>
 
