@@ -1,0 +1,225 @@
+{
+  "id": 52,
+  "sourceType": "LITERATURE",
+  "sender": "Literature Article: article_02_multi_case.pdf",
+  "subject": "article_02_multi_case.pdf - Case #2",
+  "receivedDate": "2026-09-05T15:46:44.741504",
+  "bodyText": "A 61-year-old male patient presenting with plaque psoriasis was initiated on Zolapamine at a first dose of 75 mg. Three days following the administration, the patient developed a larger and more painful area of induration, measuring approximately 8 cm, located at the abdominal injection site. This local reaction was accompanied by a low-grade fever reaching 38.1 degrees Celsius that persisted for one day. He was evaluated to rule out possible cellulitis, and an ultrasound confirmed soft-tissue edema without any abscess formation, while blood cultures returned negative. Due to the event, Zolapamine was held for one cycle and subsequently restarted at a reduced initial dose alongside premedication. Following this management strategy, the patient experienced no recurrence of the adverse reaction. The case provides insights into managing localized injection site reactions linked to this pharmaceutical product.",
+  "messageIdHeader": "lit-case-9f5f07ac-c18e-4b29-8158-b753d91db663",
+  "createdAt": "2026-09-05T15:46:44.742084",
+  "status": "PENDING_REVIEW",
+  "classifications": [
+    {
+      "id": 87,
+      "category": "SAFETY_REPORT",
+      "confidence": 0.95,
+      "reason": "Describes a second individual patient experiencing an injection site reaction and fever after starting Zolapamine.",
+      "reviewerStatus": "PENDING"
+    }
+  ],
+  "attachments": [
+    {
+      "id": 25,
+      "filename": "article_02_multi_case.pdf",
+      "contentType": "application/pdf",
+      "pdfType": "ARTICLE",
+      "loggedOnly": false,
+      "summary": null,
+      "tables": [],
+      "images": [],
+      "translation": null,
+      "isPdf": true,
+      "pdf": true
+    }
+  ],
+  "extractedFields": [
+    {
+      "id": 851,
+      "attachmentId": null,
+      "fieldGroup": "PATIENT",
+      "fieldName": "age",
+      "fieldValue": "61-year-old",
+      "confidence": 1.0,
+      "sourceType": "PDF_PAGE",
+      "sourceRef": "attachment:article_02_multi_case.pdf,page:1",
+      "reviewerEdited": false
+    },
+    {
+      "id": 852,
+      "attachmentId": null,
+      "fieldGroup": "PATIENT",
+      "fieldName": "sex",
+      "fieldValue": "Male",
+      "confidence": 1.0,
+      "sourceType": "PDF_PAGE",
+      "sourceRef": "attachment:article_02_multi_case.pdf,page:1",
+      "reviewerEdited": false
+    },
+    {
+      "id": 853,
+      "attachmentId": null,
+      "fieldGroup": "PATIENT",
+      "fieldName": "weightHeight",
+      "fieldValue": "Not stated",
+      "confidence": null,
+      "sourceType": "PDF_PAGE",
+      "sourceRef": "attachment:25,page:1",
+      "reviewerEdited": false
+    },
+    {
+      "id": 854,
+      "attachmentId": null,
+      "fieldGroup": "PATIENT",
+      "fieldName": "relevantHistory",
+      "fieldValue": "Plaque psoriasis",
+      "confidence": 1.0,
+      "sourceType": "PDF_PAGE",
+      "sourceRef": "attachment:article_02_multi_case.pdf,page:1",
+      "reviewerEdited": false
+    },
+    {
+      "id": 855,
+      "attachmentId": null,
+      "fieldGroup": "REPORTER",
+      "fieldName": "name",
+      "fieldValue": "R. Alvi, K. Sundstrom",
+      "confidence": 1.0,
+      "sourceType": "PDF_PAGE",
+      "sourceRef": "attachment:article_02_multi_case.pdf,page:1",
+      "reviewerEdited": false
+    },
+    {
+      "id": 856,
+      "attachmentId": null,
+      "fieldGroup": "REPORTER",
+      "fieldName": "role",
+      "fieldValue": "Author",
+      "confidence": 1.0,
+      "sourceType": "PDF_PAGE",
+      "sourceRef": "attachment:article_02_multi_case.pdf,page:1",
+      "reviewerEdited": false
+    },
+    {
+      "id": 857,
+      "attachmentId": null,
+      "fieldGroup": "REPORTER",
+      "fieldName": "country",
+      "fieldValue": "Not stated",
+      "confidence": null,
+      "sourceType": "PDF_PAGE",
+      "sourceRef": "attachment:25,page:1",
+      "reviewerEdited": false
+    },
+    {
+      "id": 858,
+      "attachmentId": null,
+      "fieldGroup": "PRODUCT",
+      "fieldName": "name",
+      "fieldValue": "Zolapamine",
+      "confidence": 1.0,
+      "sourceType": "PDF_PAGE",
+      "sourceRef": "attachment:article_02_multi_case.pdf,page:1",
+      "reviewerEdited": false
+    },
+    {
+      "id": 859,
+      "attachmentId": null,
+      "fieldGroup": "PRODUCT",
+      "fieldName": "dose",
+      "fieldValue": "75 mg",
+      "confidence": 1.0,
+      "sourceType": "PDF_PAGE",
+      "sourceRef": "attachment:article_02_multi_case.pdf,page:1",
+      "reviewerEdited": false
+    },
+    {
+      "id": 860,
+      "attachmentId": null,
+      "fieldGroup": "PRODUCT",
+      "fieldName": "route",
+      "fieldValue": "Injection",
+      "confidence": 1.0,
+      "sourceType": "PDF_PAGE",
+      "sourceRef": "attachment:article_02_multi_case.pdf,page:1",
+      "reviewerEdited": false
+    },
+    {
+      "id": 861,
+      "attachmentId": null,
+      "fieldGroup": "PRODUCT",
+      "fieldName": "startDate",
+      "fieldValue": "Not stated",
+      "confidence": null,
+      "sourceType": "PDF_PAGE",
+      "sourceRef": "attachment:25,page:1",
+      "reviewerEdited": false
+    },
+    {
+      "id": 862,
+      "attachmentId": null,
+      "fieldGroup": "PRODUCT",
+      "fieldName": "stopDate",
+      "fieldValue": "Not stated",
+      "confidence": null,
+      "sourceType": "PDF_PAGE",
+      "sourceRef": "attachment:25,page:1",
+      "reviewerEdited": false
+    },
+    {
+      "id": 863,
+      "attachmentId": null,
+      "fieldGroup": "REACTION",
+      "fieldName": "description",
+      "fieldValue": "Larger, more painful area of induration (approx 8 cm) at the abdominal injection site, accompanied by low-grade fever (38.1 degrees Celsius)",
+      "confidence": 1.0,
+      "sourceType": "PDF_PAGE",
+      "sourceRef": "attachment:article_02_multi_case.pdf,page:1",
+      "reviewerEdited": false
+    },
+    {
+      "id": 864,
+      "attachmentId": null,
+      "fieldGroup": "REACTION",
+      "fieldName": "onset",
+      "fieldValue": "Three days later",
+      "confidence": 1.0,
+      "sourceType": "PDF_PAGE",
+      "sourceRef": "attachment:article_02_multi_case.pdf,page:1",
+      "reviewerEdited": false
+    },
+    {
+      "id": 865,
+      "attachmentId": null,
+      "fieldGroup": "REACTION",
+      "fieldName": "outcome",
+      "fieldValue": "Without recurrence",
+      "confidence": 1.0,
+      "sourceType": "PDF_PAGE",
+      "sourceRef": "attachment:article_02_multi_case.pdf,page:1",
+      "reviewerEdited": false
+    },
+    {
+      "id": 866,
+      "attachmentId": null,
+      "fieldGroup": "SEVERITY",
+      "fieldName": "level",
+      "fieldValue": "Moderate",
+      "confidence": 1.0,
+      "sourceType": "PDF_PAGE",
+      "sourceRef": "attachment:article_02_multi_case.pdf,page:1",
+      "reviewerEdited": false
+    },
+    {
+      "id": 867,
+      "attachmentId": null,
+      "fieldGroup": "NARRATIVE",
+      "fieldName": "narrative",
+      "fieldValue": "Patient is a 61-year-old fictional male with plaque psoriasis treated with Zolapamine 75 mg first dose. Three days later, he experienced a larger, more painful area of induration (approx 8 cm) at the abdominal injection site, accompanied by low-grade fever (38.1 degrees Celsius) for one day. He was evaluated for possible cellulitis; ultrasound showed soft-tissue edema without abscess, blood cultures negative. Zolapamine was held for one cycle, restarted at a reduced initial dose with premedication, without recurrence.",
+      "confidence": 1.0,
+      "sourceType": "PDF_PAGE",
+      "sourceRef": "attachment:article_02_multi_case.pdf,page:1",
+      "reviewerEdited": false
+    }
+  ],
+  "reviewActions": []
+}

@@ -1,0 +1,37 @@
+{
+  "id": 42,
+  "sourceType": "LITERATURE",
+  "sender": "Literature Article: article_01_single_case.pdf",
+  "subject": "article_01_single_case.pdf - Case #1",
+  "receivedDate": "2026-09-05T15:44:30.994147",
+  "bodyText": "A 45-year-old man with no prior history of liver disease and no regular alcohol use was prescribed Fenravir 600 mg twice daily for seven days for a presumed viral syndrome. On day 6 of therapy, he developed fatigue, mild right upper quadrant discomfort, and darkened urine. He presented to the emergency department on day 8, which was one day after completing his short course of therapy. Laboratory testing on presentation showed significantly elevated liver enzymes including ALT of 612 U/L and AST of 488 U/L, alongside a total bilirubin of 2.1 mg/dL and a normal INR of 1.1. Extensive workup including viral hepatitis serologies, autoimmune markers, and an abdominal ultrasound were all unremarkable. A clinical diagnosis of probable drug-induced liver injury secondary to Fenravir was established based on the clear temporal relationship and the exclusion of other alternative etiologies. The patient was managed conservatively with supportive care, close monitoring, and permanent discontinuation of the offending drug. Repeat liver function tests performed at two weeks demonstrated a marked decrease in transaminases, with ALT dropping to 140 U/L and AST to 95 U/L. Full normalization of liver biochemistry was documented during a follow-up visit at three weeks post-presentation. The patient reported complete resolution of all initial symptoms and experienced no long-term health sequelae.",
+  "messageIdHeader": "lit-case-6ae2479c-3241-4f48-a143-aa14016beed5",
+  "createdAt": "2026-09-05T15:44:30.995154",
+  "status": "PENDING_REVIEW",
+  "classifications": [
+    {
+      "id": 81,
+      "category": "NOT_RELEVANT",
+      "confidence": 0.9,
+      "reason": "The article describes a single identifiable patient case of drug-induced liver injury associated with Fenravir therapy.",
+      "reviewerStatus": "PENDING"
+    }
+  ],
+  "attachments": [
+    {
+      "id": 21,
+      "filename": "article_01_single_case.pdf",
+      "contentType": "application/pdf",
+      "pdfType": "ARTICLE",
+      "loggedOnly": false,
+      "summary": null,
+      "tables": [],
+      "images": [],
+      "translation": null,
+      "isPdf": true,
+      "pdf": true
+    }
+  ],
+  "extractedFields": [],
+  "reviewActions": []
+}

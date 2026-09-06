@@ -1,0 +1,141 @@
+.header-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+
+  .page-title {
+    margin: 0 0 4px 0;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #0f172a;
+  }
+
+  .subtitle {
+    margin: 0;
+    color: #64748b;
+    font-size: 0.95rem;
+  }
+}
+
+.upload-card {
+  margin-bottom: 24px;
+
+  .hidden-input {
+    display: none;
+  }
+
+  .upload-dropzone {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 2px dashed #cbd5e1;
+    border-radius: 8px;
+    padding: 36px 20px;
+    background: #f8fafc;
+    cursor: pointer;
+    transition: border-color 0.2s, background-color 0.2s;
+
+    &:hover {
+      border-color: #6366f1;
+      background: #f1f5f9;
+    }
+
+    &.dragging-over {
+      border-color: #2563eb;
+      background: #eff6ff;
+      transform: scale(1.01);
+      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.15);
+    }
+
+    .upload-icon {
+      font-size: 48px;
+      width: 48px;
+      height: 48px;
+      color: #6366f1;
+      margin-bottom: 8px;
+    }
+
+    .upload-prompt {
+      font-weight: 600;
+      color: #1e293b;
+      margin-bottom: 4px;
+    }
+
+    .upload-subtext {
+      font-size: 0.85rem;
+      color: #475569;
+      margin-top: 8px;
+    }
+  }
+
+  .upload-actions {
+    margin-top: 16px;
+    display: flex;
+    justify-content: flex-end;
+  }
+}
+
+.results-card {
+  .w-100 {
+    width: 100%;
+  }
+
+  .tab-icon {
+    margin-right: 6px;
+    vertical-align: middle;
+
+    &.text-critical {
+      color: #dc2626;
+    }
+
+    &.text-muted {
+      color: #64748b;
+    }
+  }
+
+  .tab-table-wrapper {
+    margin-top: 16px;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .case-subject {
+    display: block;
+    margin-bottom: 4px;
+    color: #0f172a;
+  }
+
+  .summary-text {
+    font-size: 0.85rem;
+    color: #334155;
+    line-height: 1.4;
+    max-height: 3.8em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+  }
+
+  .empty-tab-state {
+    padding: 32px;
+    text-align: center;
+    color: #64748b;
+    font-size: 0.95rem;
+    background: #f8fafc;
+  }
+}
+
+.pt-3 { padding-top: 12px; }
+.pt-4 { padding-top: 16px; }
+.mt-4 { margin-top: 16px; }
+
+.results-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}

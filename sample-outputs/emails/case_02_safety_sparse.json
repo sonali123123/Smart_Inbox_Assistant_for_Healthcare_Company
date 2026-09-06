@@ -1,0 +1,236 @@
+{
+  "id": 82,
+  "sourceType": "EMAIL",
+  "sender": "J. Wren <concernedfamily04@example-mail.com>",
+  "subject": "reaction to medication",
+  "receivedDate": "2026-08-22T14:35:00",
+  "bodyText": "Hi,\n\nMy relative had a reaction to Drug X and was hospitalized. Not sure what else to tell you,\nit happened pretty fast. I'm attaching the dosing log we had at home in case it helps.\n\nPlease let us know what to do next.\n\nJ. Wren\n\n",
+  "messageIdHeader": "<email_02_safety_sparse@synthetic-test-mailbox.example.com>",
+  "createdAt": "2026-09-06T17:52:10.714647",
+  "status": "PENDING_REVIEW",
+  "classifications": [
+    {
+      "id": 158,
+      "category": "SAFETY_REPORT",
+      "confidence": 0.95,
+      "reason": "A relative had a reaction to a drug and was hospitalized.",
+      "reviewerStatus": "PENDING"
+    }
+  ],
+  "attachments": [
+    {
+      "id": 62,
+      "filename": "pdf_digital_03_dosing_schedule.pdf",
+      "contentType": "application/pdf",
+      "pdfType": "DIGITAL",
+      "loggedOnly": false,
+      "summary": {
+        "id": 21,
+        "summaryText": "This document is a patient-submitted medication dosing log associated with report reference number AER-2026-0133. The form indicates a completion date of 22-Aug-2026 while the facility is marked as not stated. The document contains a structured table outlining the administration of the fictional drug Ferravex over a four-day period. Specifically, the patient took 200 mg orally on August 18, August 19, and August 20, 2026. On August 21, 2026, the dosage was doubled to 400 mg orally, which the notes state was done per prescriber instruction. The accompanying text explicitly mentions that no further clinical details are present on the log itself and directs the reader to an associated email for a reaction description. The associated email from J. Wren reports that a relative experienced a reaction and was hospitalized rapidly after taking the medication. The document explicitly includes a disclaimer noting it is a fictional and synthetically generated file created for software testing purposes only. Despite its fictional nature, the document structurally represents a clinical adverse event notification workflow. It captures relevant drug exposure history, dosage adjustments, and temporal relationships prior to an adverse event. Consequently, this document is highly relevant to a patient-safety or quality-complaint workflow because it provides essential drug administration history corresponding to an alleged hospitalization.",
+        "relevanceOpinion": "RELEVANT",
+        "relevanceReason": "The document provides a medication dosing log detailing drug administration history and a dosage increase prior to a reported hospitalization."
+      },
+      "tables": [
+        {
+          "id": 155,
+          "pageNumber": 1,
+          "tableJson": "[[\"Drug\",\"Date\",\"Dose\",\"Route\"],[\"Ferravex (fictional drug)\",\"18-Aug-2026\",\"200 mg\",\"Oral\",\"Oral\"],[\"Ferravex (fictional drug)\",\"19-Aug-2026\",\"200 mg\",\"Oral\"],[\"Ferravex (fictional drug)\",\"20-Aug-2026\",\"200 mg\",\"Oral\"],[\"Ferravex (fictional drug)\",\"21-Aug-2026\",\"400 mg (increased)\",\"Oral\"]]"
+        }
+      ],
+      "images": [],
+      "translation": null,
+      "isPdf": true,
+      "pdf": true
+    }
+  ],
+  "extractedFields": [
+    {
+      "id": 1462,
+      "attachmentId": null,
+      "fieldGroup": "PATIENT",
+      "fieldName": "age",
+      "fieldValue": "Not stated",
+      "confidence": null,
+      "sourceType": null,
+      "sourceRef": null,
+      "reviewerEdited": false
+    },
+    {
+      "id": 1463,
+      "attachmentId": null,
+      "fieldGroup": "PATIENT",
+      "fieldName": "sex",
+      "fieldValue": "Not stated",
+      "confidence": null,
+      "sourceType": null,
+      "sourceRef": null,
+      "reviewerEdited": false
+    },
+    {
+      "id": 1464,
+      "attachmentId": null,
+      "fieldGroup": "PATIENT",
+      "fieldName": "weightHeight",
+      "fieldValue": "Not stated",
+      "confidence": null,
+      "sourceType": null,
+      "sourceRef": null,
+      "reviewerEdited": false
+    },
+    {
+      "id": 1465,
+      "attachmentId": null,
+      "fieldGroup": "PATIENT",
+      "fieldName": "relevantHistory",
+      "fieldValue": "Not stated",
+      "confidence": null,
+      "sourceType": null,
+      "sourceRef": null,
+      "reviewerEdited": false
+    },
+    {
+      "id": 1466,
+      "attachmentId": null,
+      "fieldGroup": "REPORTER",
+      "fieldName": "name",
+      "fieldValue": "J. Wren",
+      "confidence": 1.0,
+      "sourceType": "EMAIL",
+      "sourceRef": "email",
+      "reviewerEdited": false
+    },
+    {
+      "id": 1467,
+      "attachmentId": null,
+      "fieldGroup": "REPORTER",
+      "fieldName": "role",
+      "fieldValue": "Family member",
+      "confidence": 0.9,
+      "sourceType": "EMAIL",
+      "sourceRef": "email",
+      "reviewerEdited": false
+    },
+    {
+      "id": 1468,
+      "attachmentId": null,
+      "fieldGroup": "REPORTER",
+      "fieldName": "country",
+      "fieldValue": "Not stated",
+      "confidence": null,
+      "sourceType": null,
+      "sourceRef": null,
+      "reviewerEdited": false
+    },
+    {
+      "id": 1469,
+      "attachmentId": null,
+      "fieldGroup": "PRODUCT",
+      "fieldName": "name",
+      "fieldValue": "Ferravex",
+      "confidence": 0.95,
+      "sourceType": "PDF_PAGE",
+      "sourceRef": "attachment:62,page:1",
+      "reviewerEdited": false
+    },
+    {
+      "id": 1470,
+      "attachmentId": null,
+      "fieldGroup": "PRODUCT",
+      "fieldName": "dose",
+      "fieldValue": "200 mg to 400 mg",
+      "confidence": 0.9,
+      "sourceType": "PDF_PAGE",
+      "sourceRef": "attachment:62,page:1",
+      "reviewerEdited": false
+    },
+    {
+      "id": 1471,
+      "attachmentId": null,
+      "fieldGroup": "PRODUCT",
+      "fieldName": "route",
+      "fieldValue": "Oral",
+      "confidence": 0.9,
+      "sourceType": "PDF_PAGE",
+      "sourceRef": "attachment:62,page:1",
+      "reviewerEdited": false
+    },
+    {
+      "id": 1472,
+      "attachmentId": null,
+      "fieldGroup": "PRODUCT",
+      "fieldName": "startDate",
+      "fieldValue": "18-Aug-2026",
+      "confidence": 0.9,
+      "sourceType": "PDF_PAGE",
+      "sourceRef": "attachment:62,page:1",
+      "reviewerEdited": false
+    },
+    {
+      "id": 1473,
+      "attachmentId": null,
+      "fieldGroup": "PRODUCT",
+      "fieldName": "stopDate",
+      "fieldValue": "Not stated",
+      "confidence": null,
+      "sourceType": null,
+      "sourceRef": null,
+      "reviewerEdited": false
+    },
+    {
+      "id": 1474,
+      "attachmentId": null,
+      "fieldGroup": "REACTION",
+      "fieldName": "description",
+      "fieldValue": "Had a reaction and was hospitalized",
+      "confidence": 0.95,
+      "sourceType": "EMAIL",
+      "sourceRef": "email",
+      "reviewerEdited": false
+    },
+    {
+      "id": 1475,
+      "attachmentId": null,
+      "fieldGroup": "REACTION",
+      "fieldName": "onset",
+      "fieldValue": "Happened pretty fast",
+      "confidence": 0.8,
+      "sourceType": "EMAIL",
+      "sourceRef": "email",
+      "reviewerEdited": false
+    },
+    {
+      "id": 1476,
+      "attachmentId": null,
+      "fieldGroup": "REACTION",
+      "fieldName": "outcome",
+      "fieldValue": "Hospitalization",
+      "confidence": 0.95,
+      "sourceType": "EMAIL",
+      "sourceRef": "email",
+      "reviewerEdited": false
+    },
+    {
+      "id": 1477,
+      "attachmentId": null,
+      "fieldGroup": "SEVERITY",
+      "fieldName": "level",
+      "fieldValue": "Hospitalization",
+      "confidence": 0.95,
+      "sourceType": "EMAIL",
+      "sourceRef": "email",
+      "reviewerEdited": false
+    },
+    {
+      "id": 1478,
+      "attachmentId": null,
+      "fieldGroup": "NARRATIVE",
+      "fieldName": "narrative",
+      "fieldValue": "A family member (J. Wren) reported that their relative experienced a rapid adverse reaction to the medication Ferravex and required hospitalization. The attached dosing log shows the patient was taking 200 mg orally starting August 18, 2026, with a dose increase to 400 mg on August 21, 2026.",
+      "confidence": 0.95,
+      "sourceType": "EMAIL",
+      "sourceRef": "email",
+      "reviewerEdited": false
+    }
+  ],
+  "reviewActions": []
+}

@@ -1,0 +1,76 @@
+{
+  "id": 85,
+  "sourceType": "EMAIL",
+  "sender": "Consumer Affairs Portal <consumeraffairs-noreply@fictional-consumerportal.example.com>",
+  "subject": "New complaint submitted via website - discolored tablets",
+  "receivedDate": "2026-08-18T14:00:00",
+  "bodyText": "A new product quality complaint has been submitted through the consumer website.\n\nSummary: Consumer reports that approximately one third of the tablets in a newly\npurchased bottle of Nortavex (Lot LOT-7734B) were discolored with dark grey speckling\ncompared to the expected off-white color. No tablets were taken and no harm was reported.\n\nThe full intake form is attached as a PDF for your records.\n\nThis is an automated notification from the Consumer Affairs Portal.\n\n",
+  "messageIdHeader": "<email_05_quality_only_a@synthetic-test-mailbox.example.com>",
+  "createdAt": "2026-09-06T17:52:10.83379",
+  "status": "PENDING_REVIEW",
+  "classifications": [
+    {
+      "id": 159,
+      "category": "QUALITY_COMPLAINT",
+      "confidence": 1.0,
+      "reason": "Consumer reports that approximately one third of the tablets in a newly purchased bottle of Nortavex (Lot LOT-7734B) were discolored with dark grey speckling",
+      "reviewerStatus": "PENDING"
+    }
+  ],
+  "attachments": [
+    {
+      "id": 64,
+      "filename": "pdf_digital_04_quality_form.pdf",
+      "contentType": "application/pdf",
+      "pdfType": "DIGITAL",
+      "loggedOnly": false,
+      "summary": {
+        "id": 24,
+        "summaryText": "This document is a digital product quality complaint intake form concerning a fictional pharmaceutical product named Nortavex 40 mg tablets. The report reference number associated with this submission is QC-2026-0041, and the date of completion is listed as 18-Aug-2026. The facility is noted as not applicable due to being consumer-submitted from the United States. The affected product details indicate batch or lot number LOT-7734B with an expiry date of 03-2028. The quantity affected is specified as one bottle containing 30 tablets. The specific complaint details state that approximately one third of the tablets in the bottle showed visible discoloration with dark grey speckling. The remaining tablets matched the expected off-white color. The consumer noticed this issue upon opening a newly purchased bottle on 17-Aug-2026. No photo was included with the submission, and no patient harm was reported because the tablets were not taken. The submitter information indicates the complaint came from an anonymous consumer via the company website complaint form. This document appears highly relevant to a quality-complaint workflow because it directly captures a product defect notification requiring further investigation. The presence of a specific lot number and clear defect description allows quality assurance teams to trace and evaluate manufacturing issues efficiently.",
+        "relevanceOpinion": "RELEVANT",
+        "relevanceReason": "The document describes a specific product quality complaint involving discolored tablets and a lot number for investigation."
+      },
+      "tables": [],
+      "images": [],
+      "translation": null,
+      "isPdf": true,
+      "pdf": true
+    }
+  ],
+  "extractedFields": [
+    {
+      "id": 1479,
+      "attachmentId": null,
+      "fieldGroup": "QC",
+      "fieldName": "productBatchLot",
+      "fieldValue": "LOT-7734B",
+      "confidence": 1.0,
+      "sourceType": "EMAIL",
+      "sourceRef": "email",
+      "reviewerEdited": false
+    },
+    {
+      "id": 1480,
+      "attachmentId": null,
+      "fieldGroup": "QC",
+      "fieldName": "defectDescription",
+      "fieldValue": "Approximately one third of the tablets in a newly purchased bottle of Nortavex were discolored with dark grey speckling compared to the expected off-white color.",
+      "confidence": 1.0,
+      "sourceType": "EMAIL",
+      "sourceRef": "email",
+      "reviewerEdited": false
+    },
+    {
+      "id": 1481,
+      "attachmentId": null,
+      "fieldGroup": "QC",
+      "fieldName": "photoMentioned",
+      "fieldValue": "Not stated",
+      "confidence": null,
+      "sourceType": null,
+      "sourceRef": null,
+      "reviewerEdited": false
+    }
+  ],
+  "reviewActions": []
+}

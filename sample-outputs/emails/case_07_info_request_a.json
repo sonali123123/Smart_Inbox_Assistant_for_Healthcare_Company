@@ -1,0 +1,35 @@
+{
+  "id": 87,
+  "sourceType": "EMAIL",
+  "sender": "Marcus Delgado <m.delgado@example-personalmail.com>",
+  "subject": "Question about taking Nortavex with food",
+  "receivedDate": "2026-08-19T15:32:00",
+  "bodyText": "Hi,\n\nQuick question - should Nortavex be taken with food or on an empty stomach? The leaflet\nthat came with my prescription doesn't say. Thanks!\n\nMarcus\n\n",
+  "messageIdHeader": "<email_07_info_request_a@synthetic-test-mailbox.example.com>",
+  "createdAt": "2026-09-06T17:52:10.998088",
+  "status": "PENDING_REVIEW",
+  "classifications": [
+    {
+      "id": 162,
+      "category": "INFO_REQUEST",
+      "confidence": 1.0,
+      "reason": "The sender is asking a specific product usage question about whether Nortavex should be taken with food.",
+      "reviewerStatus": "PENDING"
+    }
+  ],
+  "attachments": [],
+  "extractedFields": [
+    {
+      "id": 1516,
+      "attachmentId": null,
+      "fieldGroup": "INFO_REQUEST",
+      "fieldName": "question_1",
+      "fieldValue": "Should Nortavex be taken with food or on an empty stomach? (Topic: Nortavex)",
+      "confidence": 1.0,
+      "sourceType": "EMAIL",
+      "sourceRef": "email",
+      "reviewerEdited": false
+    }
+  ],
+  "reviewActions": []
+}

@@ -1,0 +1,225 @@
+{
+  "id": 49,
+  "sourceType": "LITERATURE",
+  "sender": "Literature Article: article_01_single_case.pdf",
+  "subject": "article_01_single_case.pdf - Case #1",
+  "receivedDate": "2026-09-05T15:46:33.840401",
+  "bodyText": "A 45-year-old man with no prior history of liver disease or regular alcohol use experienced acute hepatotoxicity after taking Fenravir. He was prescribed Fenravir at a dose of 600 mg twice daily for a planned seven-day course. On day 6 of therapy, he developed symptoms including fatigue, mild right upper quadrant discomfort, and darkened urine. He subsequently presented to the emergency department on day 8 for evaluation. Laboratory testing revealed significantly elevated liver enzymes, with an ALT of 612 U/L and AST of 488 U/L. His total bilirubin was measured at 2.1 mg/dL, while his INR remained normal at 1.1. Extensive workup including viral hepatitis serologies, autoimmune markers, and an abdominal ultrasound were all unremarkable. Based on these findings, he was diagnosed with probable drug-induced liver injury secondary to Fenravir. The patient was managed conservatively with supportive care and close monitoring while Fenravir was permanently discontinued. Repeat liver function tests at two weeks showed marked improvement, with ALT dropping to 140 U/L and AST to 95 U/L. By the three-week follow-up, his liver function tests had fully normalized and his symptoms had completely resolved.",
+  "messageIdHeader": "lit-case-6bfbc796-2f75-4a0a-b76c-86aeaa29c38c",
+  "createdAt": "2026-09-05T15:46:33.842022",
+  "status": "PENDING_REVIEW",
+  "classifications": [
+    {
+      "id": 85,
+      "category": "SAFETY_REPORT",
+      "confidence": 0.95,
+      "reason": "The article describes a specific patient experiencing a reportable adverse reaction (acute hepatotoxicity) to a specific pharmaceutical product (Fenravir).",
+      "reviewerStatus": "PENDING"
+    }
+  ],
+  "attachments": [
+    {
+      "id": 24,
+      "filename": "article_01_single_case.pdf",
+      "contentType": "application/pdf",
+      "pdfType": "ARTICLE",
+      "loggedOnly": false,
+      "summary": null,
+      "tables": [],
+      "images": [],
+      "translation": null,
+      "isPdf": true,
+      "pdf": true
+    }
+  ],
+  "extractedFields": [
+    {
+      "id": 817,
+      "attachmentId": null,
+      "fieldGroup": "PATIENT",
+      "fieldName": "age",
+      "fieldValue": "45-year-old",
+      "confidence": 1.0,
+      "sourceType": "PDF_PAGE",
+      "sourceRef": "attachment:article_01_single_case.pdf,page:1",
+      "reviewerEdited": false
+    },
+    {
+      "id": 818,
+      "attachmentId": null,
+      "fieldGroup": "PATIENT",
+      "fieldName": "sex",
+      "fieldValue": "Male",
+      "confidence": 1.0,
+      "sourceType": "PDF_PAGE",
+      "sourceRef": "attachment:article_01_single_case.pdf,page:1",
+      "reviewerEdited": false
+    },
+    {
+      "id": 819,
+      "attachmentId": null,
+      "fieldGroup": "PATIENT",
+      "fieldName": "weightHeight",
+      "fieldValue": "Not stated",
+      "confidence": null,
+      "sourceType": "PDF_PAGE",
+      "sourceRef": "attachment:24,page:1",
+      "reviewerEdited": false
+    },
+    {
+      "id": 820,
+      "attachmentId": null,
+      "fieldGroup": "PATIENT",
+      "fieldName": "relevantHistory",
+      "fieldValue": "No prior history of liver disease and no regular alcohol use",
+      "confidence": 1.0,
+      "sourceType": "PDF_PAGE",
+      "sourceRef": "attachment:article_01_single_case.pdf,page:1",
+      "reviewerEdited": false
+    },
+    {
+      "id": 821,
+      "attachmentId": null,
+      "fieldGroup": "REPORTER",
+      "fieldName": "name",
+      "fieldValue": "L. Bramwell, T. Osei, S. Nakagawa",
+      "confidence": 1.0,
+      "sourceType": "PDF_PAGE",
+      "sourceRef": "attachment:article_01_single_case.pdf,page:1",
+      "reviewerEdited": false
+    },
+    {
+      "id": 822,
+      "attachmentId": null,
+      "fieldGroup": "REPORTER",
+      "fieldName": "role",
+      "fieldValue": "Author",
+      "confidence": 1.0,
+      "sourceType": "PDF_PAGE",
+      "sourceRef": "attachment:article_01_single_case.pdf,page:1",
+      "reviewerEdited": false
+    },
+    {
+      "id": 823,
+      "attachmentId": null,
+      "fieldGroup": "REPORTER",
+      "fieldName": "country",
+      "fieldValue": "Not stated",
+      "confidence": null,
+      "sourceType": "PDF_PAGE",
+      "sourceRef": "attachment:24,page:1",
+      "reviewerEdited": false
+    },
+    {
+      "id": 824,
+      "attachmentId": null,
+      "fieldGroup": "PRODUCT",
+      "fieldName": "name",
+      "fieldValue": "Fenravir",
+      "confidence": 1.0,
+      "sourceType": "PDF_PAGE",
+      "sourceRef": "attachment:article_01_single_case.pdf,page:1",
+      "reviewerEdited": false
+    },
+    {
+      "id": 825,
+      "attachmentId": null,
+      "fieldGroup": "PRODUCT",
+      "fieldName": "dose",
+      "fieldValue": "600 mg twice daily",
+      "confidence": 1.0,
+      "sourceType": "PDF_PAGE",
+      "sourceRef": "attachment:article_01_single_case.pdf,page:1",
+      "reviewerEdited": false
+    },
+    {
+      "id": 826,
+      "attachmentId": null,
+      "fieldGroup": "PRODUCT",
+      "fieldName": "route",
+      "fieldValue": "Not stated",
+      "confidence": null,
+      "sourceType": "PDF_PAGE",
+      "sourceRef": "attachment:24,page:1",
+      "reviewerEdited": false
+    },
+    {
+      "id": 827,
+      "attachmentId": null,
+      "fieldGroup": "PRODUCT",
+      "fieldName": "startDate",
+      "fieldValue": "Not stated",
+      "confidence": null,
+      "sourceType": "PDF_PAGE",
+      "sourceRef": "attachment:24,page:1",
+      "reviewerEdited": false
+    },
+    {
+      "id": 828,
+      "attachmentId": null,
+      "fieldGroup": "PRODUCT",
+      "fieldName": "stopDate",
+      "fieldValue": "Day 7",
+      "confidence": 0.9,
+      "sourceType": "PDF_PAGE",
+      "sourceRef": "attachment:article_01_single_case.pdf,page:1",
+      "reviewerEdited": false
+    },
+    {
+      "id": 829,
+      "attachmentId": null,
+      "fieldGroup": "REACTION",
+      "fieldName": "description",
+      "fieldValue": "Acute hepatotoxicity, drug-induced liver injury, fatigue, mild right upper quadrant discomfort, darkened urine, elevated ALT (612 U/L), elevated AST (488 U/L), and elevated total bilirubin (2.1 mg/dL)",
+      "confidence": 1.0,
+      "sourceType": "PDF_PAGE",
+      "sourceRef": "attachment:article_01_single_case.pdf,page:1",
+      "reviewerEdited": false
+    },
+    {
+      "id": 830,
+      "attachmentId": null,
+      "fieldGroup": "REACTION",
+      "fieldName": "onset",
+      "fieldValue": "Day 6 of therapy",
+      "confidence": 1.0,
+      "sourceType": "PDF_PAGE",
+      "sourceRef": "attachment:article_01_single_case.pdf,page:1",
+      "reviewerEdited": false
+    },
+    {
+      "id": 831,
+      "attachmentId": null,
+      "fieldGroup": "REACTION",
+      "fieldName": "outcome",
+      "fieldValue": "Recovered / Resolved",
+      "confidence": 1.0,
+      "sourceType": "PDF_PAGE",
+      "sourceRef": "attachment:article_01_single_case.pdf,page:1",
+      "reviewerEdited": false
+    },
+    {
+      "id": 832,
+      "attachmentId": null,
+      "fieldGroup": "SEVERITY",
+      "fieldName": "level",
+      "fieldValue": "Moderate to severe (required emergency department presentation and close monitoring for acute hepatotoxicity)",
+      "confidence": 0.9,
+      "sourceType": "PDF_PAGE",
+      "sourceRef": "attachment:article_01_single_case.pdf,page:1",
+      "reviewerEdited": false
+    },
+    {
+      "id": 833,
+      "attachmentId": null,
+      "fieldGroup": "NARRATIVE",
+      "fieldName": "narrative",
+      "fieldValue": "A 45-year-old man with no prior history of liver disease and no regular alcohol use developed fatigue, mild right upper quadrant discomfort, and darkened urine on day 6 of Fenravir therapy (600 mg twice daily for seven days). He presented to the emergency department on day 8, where laboratory testing showed ALT 612 U/L, AST 488 U/L, total bilirubin 2.1 mg/dL, and INR 1.1. Viral hepatitis serologies, autoimmune markers, and abdominal ultrasound were unremarkable. He was diagnosed with probable drug-induced liver injury secondary to Fenravir, managed conservatively with supportive care, and Fenravir was not resumed. Repeat liver function tests at two weeks showed improvement (ALT 140 U/L, AST 95 U/L), with full normalization and complete resolution of symptoms at the three-week follow-up.",
+      "confidence": 1.0,
+      "sourceType": "PDF_PAGE",
+      "sourceRef": "attachment:article_01_single_case.pdf,page:1",
+      "reviewerEdited": false
+    }
+  ],
+  "reviewActions": []
+}

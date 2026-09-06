@@ -1,0 +1,133 @@
+<div class="page-container">
+  <div class="header-section">
+    <div>
+      <h1 class="page-title">Automated Batch Document Processing</h1>
+      <p class="subtitle">Runs all test documents end-to-end and measures processing latency per file</p>
+    </div>
+    <div>
+      <button mat-button routerLink="/messages">
+        <mat-icon>arrow_back</mat-icon> Return to Queue
+      </button>
+    </div>
+  </div>
+
+  <mat-card class="form-card">
+    <mat-card-header>
+      <mat-card-title>Run Test Dataset Batch</mat-card-title>
+      <mat-card-subtitle>Point to the directory containing .eml files and their embedded or linked attachments</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content class="pt-4">
+      <div class="input-row">
+        <mat-form-field appearance="outline" class="dir-input">
+          <mat-label>Source Directory</mat-label>
+          <input matInput [(ngModel)]="sourceDir" placeholder="test-data/emails">
+        </mat-form-field>
+        <button mat-raised-button color="primary" class="run-btn" (click)="runBatch()" [disabled]="running">
+          <mat-icon>{{ running ? 'hourglass_empty' : 'play_arrow' }}</mat-icon>
+          {{ running ? 'Batch Running...' : 'Execute Batch Pipeline' }}
+        </button>
+      </div>
+
+      <mat-progress-bar *ngIf="running" mode="indeterminate" class="mt-4"></mat-progress-bar>
+    </mat-card-content>
+  </mat-card>
+
+  <!-- Aggregate Batch Metrics -->
+  <div class="kpi-grid" *ngIf="metrics">
+    <mat-card class="kpi-card">
+      <div class="kpi-content">
+        <span class="kpi-value">{{ metrics.totalDocs }}</span>
+        <span class="kpi-label">Total Documents</span>
+      </div>
+      <div class="kpi-icon-wrapper routine">
+        <mat-icon>inventory_2</mat-icon>
+      </div>
+    </mat-card>
+
+    <mat-card class="kpi-card">
+      <div class="kpi-content">
+        <span class="kpi-value">{{ metrics.completedDocs }}</span>
+        <span class="kpi-label">Completed ({{ metrics.successRate }}%)</span>
+      </div>
+      <div class="kpi-icon-wrapper success">
+        <mat-icon>check_circle</mat-icon>
+      </div>
+    </mat-card>
+
+    <mat-card class="kpi-card">
+      <div class="kpi-content">
+        <span class="kpi-value">{{ metrics.failedDocs }}</span>
+        <span class="kpi-label">Failed / Errored</span>
+      </div>
+      <div class="kpi-icon-wrapper critical">
+        <mat-icon>error</mat-icon>
+      </div>
+    </mat-card>
+
+    <mat-card class="kpi-card">
+      <div class="kpi-content">
+        <span class="kpi-value">{{ (metrics.avgDurationMs / 1000).toFixed(1) }}s</span>
+        <span class="kpi-label">Mean Latency / Doc</span>
+      </div>
+      <div class="kpi-icon-wrapper warning">
+        <mat-icon>speed</mat-icon>
+      </div>
+    </mat-card>
+  </div>
+
+  <!-- Results Table -->
+  <mat-card class="results-card" *ngIf="batchStatus">
+    <mat-card-header>
+      <mat-card-title>Batch Results: {{ batchStatus.batchId }}</mat-card-title>
+      <mat-card-subtitle>{{ batchStatus.documents.length }} documents processed in this batch</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content class="pt-4">
+      <table mat-table [dataSource]="batchStatus.documents" class="w-100">
+
+        <!-- Document / Subject Column -->
+        <ng-container matColumnDef="filename">
+          <th mat-header-cell *matHeaderCellDef>Document / Email Subject</th>
+          <td mat-cell *matCellDef="let d">
+            <strong>{{ d.filename }}</strong>
+            <div *ngIf="d.errorMessage" class="error-text">{{ d.errorMessage }}</div>
+          </td>
+        </ng-container>
+
+        <!-- Status Column -->
+        <ng-container matColumnDef="status">
+          <th mat-header-cell *matHeaderCellDef width="150">Status</th>
+          <td mat-cell *matCellDef="let d">
+            <span class="badge" [ngClass]="{'high': d.status === 'DONE', 'medium': d.status === 'PROCESSING' || d.status === 'QUEUED', 'low': d.status === 'FAILED'}">
+              {{ d.status }}
+            </span>
+          </td>
+        </ng-container>
+
+        <!-- Duration Column -->
+        <ng-container matColumnDef="durationMs">
+          <th mat-header-cell *matHeaderCellDef width="180">Duration (ms)</th>
+          <td mat-cell *matCellDef="let d">
+            <span *ngIf="d.durationMs" class="latency-pill" [class.latency-warn]="d.durationMs > 30000">
+              {{ d.durationMs }} ms ({{ (d.durationMs / 1000).toFixed(1) }}s)
+            </span>
+            <span *ngIf="!d.durationMs" class="text-muted">—</span>
+          </td>
+        </ng-container>
+
+        <!-- Actions Column -->
+        <ng-container matColumnDef="actions">
+          <th mat-header-cell *matHeaderCellDef width="150">Action</th>
+          <td mat-cell *matCellDef="let d">
+            <button *ngIf="d.messageId" mat-flat-button color="primary" (click)="viewMessage(d.messageId)">
+              <mat-icon>visibility</mat-icon> Review
+            </button>
+            <span *ngIf="!d.messageId" class="text-muted">—</span>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+    </mat-card-content>
+  </mat-card>
+</div>

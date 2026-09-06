@@ -1,0 +1,37 @@
+{
+  "id": 45,
+  "sourceType": "LITERATURE",
+  "sender": "Literature Article: article_02_multi_case.pdf",
+  "subject": "article_02_multi_case.pdf - Case #2",
+  "receivedDate": "2026-09-05T15:44:42.54613",
+  "bodyText": "A 61-year-old male patient suffering from plaque psoriasis was administered his first dose of Zolapamine at 75 mg. Three days after the administration, he developed a larger and more painful area of induration, measuring approximately 8 cm, at the abdominal injection site. This local reaction was accompanied by a low-grade fever of 38.1 degrees Celsius that lasted for one day. He was evaluated to rule out possible cellulitis; an ultrasound demonstrated soft-tissue edema without any abscess formation, and blood cultures returned negative results. Due to the adverse event, Zolapamine was held for one cycle and later restarted at a reduced initial dose alongside premedication. Following this management strategy, the patient experienced no recurrence of the symptoms.",
+  "messageIdHeader": "lit-case-04f2f135-8b33-467c-b4c0-1db93a581a48",
+  "createdAt": "2026-09-05T15:44:42.546129",
+  "status": "PENDING_REVIEW",
+  "classifications": [
+    {
+      "id": 83,
+      "category": "NOT_RELEVANT",
+      "confidence": 0.9,
+      "reason": "The article describes a specific identifiable patient who experienced a reportable adverse drug reaction (injection-site induration and fever) following administration of Zolapamine.",
+      "reviewerStatus": "PENDING"
+    }
+  ],
+  "attachments": [
+    {
+      "id": 22,
+      "filename": "article_02_multi_case.pdf",
+      "contentType": "application/pdf",
+      "pdfType": "ARTICLE",
+      "loggedOnly": false,
+      "summary": null,
+      "tables": [],
+      "images": [],
+      "translation": null,
+      "isPdf": true,
+      "pdf": true
+    }
+  ],
+  "extractedFields": [],
+  "reviewActions": []
+}

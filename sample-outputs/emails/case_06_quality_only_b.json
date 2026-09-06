@@ -1,0 +1,104 @@
+{
+  "id": 86,
+  "sourceType": "EMAIL",
+  "sender": "Consumer Affairs Portal <consumeraffairs-noreply@fictional-consumerportal.example.com>",
+  "subject": "New complaint submitted via website - broken seal, photo attached",
+  "receivedDate": "2026-08-21T22:25:00",
+  "bodyText": "A new product quality complaint has been submitted through the consumer website.\n\nSummary: Consumer reports that the tamper-evident seal on a newly delivered bottle of\nCalmerol (Lot LOT-2291C) was broken and partially peeled back upon arrival. The bottle\nwas not opened or used. The consumer attached a photo of the damaged seal to their\nsubmission, which is embedded in the attached intake form PDF.\n\nThis is an automated notification from the Consumer Affairs Portal.\n\n",
+  "messageIdHeader": "<email_06_quality_only_b@synthetic-test-mailbox.example.com>",
+  "createdAt": "2026-09-06T17:52:10.902418",
+  "status": "PENDING_REVIEW",
+  "classifications": [
+    {
+      "id": 165,
+      "category": "QUALITY_COMPLAINT",
+      "confidence": 1.0,
+      "reason": "Consumer reports that the tamper-evident seal on a newly delivered bottle was broken and partially peeled back.",
+      "reviewerStatus": "PENDING"
+    }
+  ],
+  "attachments": [
+    {
+      "id": 65,
+      "filename": "pdf_digital_05_form_with_image.pdf",
+      "contentType": "application/pdf",
+      "pdfType": "DIGITAL",
+      "loggedOnly": false,
+      "summary": {
+        "id": 25,
+        "summaryText": "This document is a product quality complaint intake form submitted through a consumer website. It bears the report reference number QC-2026-0047 and was completed on August 21, 2026. The product involved is Calmerol 10 mg tablets, associated with batch or lot number LOT-2291C and an expiry date of November 2027. The quantity affected is specified as one bottle containing 60 tablets. The reported defect describes a tamper-evident seal on the bottle cap that was broken and partially peeled back upon receipt. This issue was noticed immediately upon delivery on August 20, 2026, before the bottle was ever opened. The intake form notes that no patient harm was reported because the bottle was not used. A photograph of the damaged tamper-evident seal is attached and embedded in the document on the second page. The submitter information indicates that the report came from an unspecified consumer in the United States via a website complaint form. Additionally, the form includes a disclaimer noting that it is a fictional and synthetically generated document created solely for software testing purposes. This document is extremely relevant to a quality-complaint workflow due to the specific report of a damaged packaging seal. Therefore, it requires appropriate tracking and review by quality assurance personnel.",
+        "relevanceOpinion": "RELEVANT",
+        "relevanceReason": "The document contains a direct report of a product packaging defect concerning a broken tamper-evident seal."
+      },
+      "tables": [
+        {
+          "id": 164,
+          "pageNumber": 1,
+          "tableJson": "[[\"Product Name\",\"Calmerol (fictional drug), 10 mg tablets\"],[\"Batch / Lot Number\",\"LOT-2291C\"],[\"Expiry Date\",\"11-2027\"],[\"Quantity Affected\",\"1 bottle (60 tablets)\"]]"
+        },
+        {
+          "id": 165,
+          "pageNumber": 1,
+          "tableJson": "[[\"Description of Defect\",\"The tamper-evident seal on the bottle cap was broken and partially peeled back upon receipt of a new order.\"],[\"When Noticed\",\"Upon delivery, 20-Aug-2026, before the bottle was opened\"],[\"Photo Mentioned / Attached\",\"Yes — consumer attached a photo of the damaged seal (embedded below)\"],[\"Patient Harm Reported\",\"None reported; bottle was not used\"]]"
+        },
+        {
+          "id": 163,
+          "pageNumber": 1,
+          "tableJson": "[[\"Form\",\"Product Quality Complaint Intake Form\"],[\"Report Reference No.\",\"QC-2026-0047\"],[\"Date Completed\",\"21-Aug-2026\"],[\"Facility\",\"Not applicable — consumer-submitted\"]]"
+        },
+        {
+          "id": 166,
+          "pageNumber": 2,
+          "tableJson": "[[\"Submitted By\",\"Consumer (name withheld on form)\"],[\"Contact Method\",\"Company website complaint form, photo attached\"],[\"Country\",\"United States\"]]"
+        }
+      ],
+      "images": [
+        {
+          "id": 45,
+          "pageNumber": 2,
+          "description": "A photograph of a white plastic pill bottle cap with its tamper-evident plastic seal broken and partially peeled back.",
+          "reviewFlag": true
+        }
+      ],
+      "translation": null,
+      "isPdf": true,
+      "pdf": true
+    }
+  ],
+  "extractedFields": [
+    {
+      "id": 1519,
+      "attachmentId": null,
+      "fieldGroup": "QC",
+      "fieldName": "productBatchLot",
+      "fieldValue": "LOT-2291C",
+      "confidence": 1.0,
+      "sourceType": "EMAIL",
+      "sourceRef": "email",
+      "reviewerEdited": false
+    },
+    {
+      "id": 1520,
+      "attachmentId": null,
+      "fieldGroup": "QC",
+      "fieldName": "defectDescription",
+      "fieldValue": "The tamper-evident seal on the bottle cap was broken and partially peeled back upon receipt of a new order.",
+      "confidence": 1.0,
+      "sourceType": "PDF_PAGE",
+      "sourceRef": "attachment:65,page:1",
+      "reviewerEdited": false
+    },
+    {
+      "id": 1521,
+      "attachmentId": null,
+      "fieldGroup": "QC",
+      "fieldName": "photoMentioned",
+      "fieldValue": "True",
+      "confidence": 1.0,
+      "sourceType": "EMAIL",
+      "sourceRef": "email",
+      "reviewerEdited": false
+    }
+  ],
+  "reviewActions": []
+}

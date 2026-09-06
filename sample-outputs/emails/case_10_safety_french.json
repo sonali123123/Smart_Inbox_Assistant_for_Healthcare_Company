@@ -1,0 +1,29 @@
+{
+  "id": 90,
+  "sourceType": "EMAIL",
+  "sender": "Dr. Camille Rousseau <c.rousseau@cliniquesaintaubin-example.fr>",
+  "subject": "Adverse event report from our French clinic (form in French, attached)",
+  "receivedDate": "2026-08-19T22:55:00",
+  "bodyText": "Dear Safety Team,\n\nI'm writing on behalf of our clinic in Lyon, France, to report an adverse reaction in one\nof our patients. Our internal reporting form is completed in French, as that is our\nstandard documentation language - I've attached it as a PDF.\n\nIn brief: a 59-year-old female patient developed a generalized rash with intense itching\nand mild eyelid swelling approximately six days after starting Nortavex 40 mg daily. The\nmedication was stopped and an oral antihistamine was prescribed; symptoms resolved over\nabout five days. She was not hospitalized.\n\nPlease let me know if you need this translated further or if the attached form is\nsufficient for your review process.\n\nBest regards,\nDr. Camille Rousseau\nClinique Saint-Aubin, Lyon\n\n",
+  "messageIdHeader": "<email_10_safety_non_english_context@synthetic-test-mailbox.example.com>",
+  "createdAt": "2026-09-06T17:52:11.084535",
+  "status": "REVIEWED",
+  "classifications": [],
+  "attachments": [
+    {
+      "id": 66,
+      "filename": "pdf_nonenglish_01_french.pdf",
+      "contentType": "application/pdf",
+      "pdfType": null,
+      "loggedOnly": false,
+      "summary": null,
+      "tables": [],
+      "images": [],
+      "translation": null,
+      "isPdf": true,
+      "pdf": true
+    }
+  ],
+  "extractedFields": [],
+  "reviewActions": []
+}

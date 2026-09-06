@@ -1,0 +1,47 @@
+{
+  "id": 65,
+  "sourceType": "LITERATURE",
+  "sender": "Literature Article: article_03_not_reportable.pdf",
+  "subject": "article_03_not_reportable.pdf - Case #1",
+  "receivedDate": "2026-09-05T23:48:29.504731",
+  "bodyText": "This article is a narrative review summarizing the current understanding of cytochrome P450-mediated metabolism of antiviral compounds and its implications for drug-drug interaction risk. It discusses hepatic metabolism pathways, CYP3A4 and CYP2D6 enzymes, and population pharmacokinetic modeling studies in a general context. The text also reviews drug-drug interaction considerations involving CYP3A4 inhibitors and inducers, as well as future directions in pharmacogenomic research. The publication explicitly states that no individual patient cases are described and that it synthesizes mechanistic and population-level pharmacokinetic literature. Furthermore, the review does not report on any specific patient encounter or adverse event, serving purely as background literature for prescribers and pharmacovigilance reviewers. Consequently, there are no specific patient details, product doses, or adverse event descriptions to extract. The document represents general scientific review material rather than a pharmacovigilance case report. Therefore, no individual patient safety report can be generated from this text.",
+  "messageIdHeader": "lit-case-f92c38cf-9250-4111-a45d-1a4bf1e4f885",
+  "createdAt": "2026-09-05T23:48:29.508252",
+  "status": "REVIEWED",
+  "classifications": [
+    {
+      "id": 123,
+      "category": "NOT_RELEVANT",
+      "confidence": 0.9,
+      "reason": "The article is a narrative review discussing drug metabolism mechanisms and population pharmacokinetics without describing any individual patient cases or specific adverse events.",
+      "reviewerStatus": "ACCEPTED"
+    }
+  ],
+  "attachments": [
+    {
+      "id": 42,
+      "filename": "article_03_not_reportable.pdf",
+      "contentType": "application/pdf",
+      "pdfType": "ARTICLE",
+      "loggedOnly": false,
+      "summary": null,
+      "tables": [],
+      "images": [],
+      "translation": null,
+      "isPdf": true,
+      "pdf": true
+    }
+  ],
+  "extractedFields": [],
+  "reviewActions": [
+    {
+      "id": 21,
+      "reviewerName": "Dr. Sarah Lin (Safety Officer)",
+      "action": "ACCEPT",
+      "targetRef": "classification:123",
+      "previousValue": "NOT_RELEVANT",
+      "newValue": "NOT_RELEVANT",
+      "timestamp": "2026-09-06T13:32:46.952114"
+    }
+  ]
+}

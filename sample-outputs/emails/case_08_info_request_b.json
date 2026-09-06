@@ -1,0 +1,46 @@
+{
+  "id": 88,
+  "sourceType": "EMAIL",
+  "sender": "Sandra Whitfield <s.whitfield@example-personalmail.com>",
+  "subject": "Two questions about Calmerol dosing and interactions",
+  "receivedDate": "2026-08-23T19:17:00",
+  "bodyText": "Hello,\n\nI have two questions about Calmerol before I start taking it:\n\n1. My doctor prescribed 10 mg twice daily, but the pharmacy label just says \"take as\n   directed\" - can you confirm 10 mg twice daily (morning and evening) is the standard\n   dosing for adults?\n\n2. I also take an over-the-counter antihistamine occasionally for seasonal allergies -\n   is there any known interaction between Calmerol and common antihistamines?\n\nI haven't started the medication yet and have not experienced any issues - just want to\nmake sure I understand the instructions before I begin.\n\nThank you,\nSandra Whitfield\n\n",
+  "messageIdHeader": "<email_08_info_request_b@synthetic-test-mailbox.example.com>",
+  "createdAt": "2026-09-06T17:52:11.032416",
+  "status": "PENDING_REVIEW",
+  "classifications": [
+    {
+      "id": 163,
+      "category": "INFO_REQUEST",
+      "confidence": 1.0,
+      "reason": "The sender is asking questions about dosing and drug interactions before taking the medication.",
+      "reviewerStatus": "PENDING"
+    }
+  ],
+  "attachments": [],
+  "extractedFields": [
+    {
+      "id": 1517,
+      "attachmentId": null,
+      "fieldGroup": "INFO_REQUEST",
+      "fieldName": "question_1",
+      "fieldValue": "Can you confirm 10 mg twice daily (morning and evening) is the standard dosing for adults? (Topic: Calmerol)",
+      "confidence": 1.0,
+      "sourceType": "EMAIL",
+      "sourceRef": "email",
+      "reviewerEdited": false
+    },
+    {
+      "id": 1518,
+      "attachmentId": null,
+      "fieldGroup": "INFO_REQUEST",
+      "fieldName": "question_2",
+      "fieldValue": "Is there any known interaction between Calmerol and common antihistamines? (Topic: Calmerol)",
+      "confidence": 1.0,
+      "sourceType": "EMAIL",
+      "sourceRef": "email",
+      "reviewerEdited": false
+    }
+  ],
+  "reviewActions": []
+}

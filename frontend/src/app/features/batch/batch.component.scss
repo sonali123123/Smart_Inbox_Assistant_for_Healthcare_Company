@@ -1,0 +1,147 @@
+.header-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+
+  .page-title {
+    margin: 0 0 4px 0;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #0f172a;
+  }
+
+  .subtitle {
+    margin: 0;
+    color: #64748b;
+    font-size: 0.95rem;
+  }
+}
+
+.form-card {
+  margin-bottom: 24px;
+
+  .input-row {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+
+    .dir-input {
+      flex: 1;
+      margin-bottom: -16px;
+    }
+
+    .run-btn {
+      height: 54px;
+      padding: 0 24px;
+      font-weight: 600;
+    }
+  }
+}
+
+/* KPI Summary Cards Grid */
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+
+  .kpi-card {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 20px;
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+
+    .kpi-content {
+      display: flex;
+      flex-direction: column;
+
+      .kpi-value {
+        font-size: 1.6rem;
+        font-weight: 700;
+        color: #0f172a;
+        line-height: 1.2;
+      }
+
+      .kpi-label {
+        font-size: 0.8rem;
+        font-weight: 500;
+        color: #64748b;
+        margin-top: 4px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+    }
+
+    .kpi-icon-wrapper {
+      width: 44px;
+      height: 44px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      &.routine {
+        background: #f1f5f9;
+        color: #475569;
+      }
+
+      &.success {
+        background: #ecfdf5;
+        color: #059669;
+      }
+
+      &.critical {
+        background: #fef2f2;
+        color: #dc2626;
+      }
+
+      &.warning {
+        background: #fffbeb;
+        color: #d97706;
+      }
+    }
+  }
+}
+
+.results-card {
+  .w-100 {
+    width: 100%;
+  }
+
+  .error-text {
+    font-size: 0.8rem;
+    color: #b91c1c;
+    margin-top: 2px;
+  }
+}
+
+.latency-pill {
+  display: inline-block;
+  padding: 4px 8px;
+  background: #f1f5f9;
+  border-radius: 4px;
+  font-family: monospace;
+  font-size: 0.85rem;
+  color: #334155;
+
+  &.latency-warn {
+    background: #fef3c7;
+    color: #92400e;
+    font-weight: 600;
+  }
+}
+
+.pt-4 { padding-top: 16px; }
+.mt-4 { margin-top: 16px; }
+.text-muted { color: #64748b; }

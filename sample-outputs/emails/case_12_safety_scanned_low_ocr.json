@@ -1,0 +1,29 @@
+{
+  "id": 92,
+  "sourceType": "EMAIL",
+  "sender": "Rural Health Post - Records Office <reports@fictional-ruralhealthpost-example.com>",
+  "subject": "Second scanned form - handwriting quality poor, please advise",
+  "receivedDate": "2026-08-25T15:10:00",
+  "bodyText": "To Whom It May Concern,\n\nAttaching a second scanned adverse event form, also related to Drug \"Verolan.\" This one\nwas completed quickly during a busy clinic day and the handwriting is harder to read in\nplaces - in particular the dose field looks smudged and the reporter's role is\nabbreviated in a way that isn't entirely clear to us either.\n\nWe wanted to send it as-is rather than delay reporting while we tracked down the\noriginal nurse for clarification. Please flag any fields that need confirmation and we\nwill follow up with the clinic.\n\nRecords Office\nRural Health Post\n\n",
+  "messageIdHeader": "<email_12_safety_scanned_2@synthetic-test-mailbox.example.com>",
+  "createdAt": "2026-09-06T17:52:11.225266",
+  "status": "REVIEWED",
+  "classifications": [],
+  "attachments": [
+    {
+      "id": 68,
+      "filename": "pdf_scanned_02_handwritten_low_legibility.pdf",
+      "contentType": "application/pdf",
+      "pdfType": null,
+      "loggedOnly": false,
+      "summary": null,
+      "tables": [],
+      "images": [],
+      "translation": null,
+      "isPdf": true,
+      "pdf": true
+    }
+  ],
+  "extractedFields": [],
+  "reviewActions": []
+}

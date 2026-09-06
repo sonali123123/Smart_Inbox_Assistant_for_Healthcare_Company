@@ -1,0 +1,25 @@
+<mat-toolbar color="primary" class="main-toolbar">
+  <div class="toolbar-brand" routerLink="/">
+    <mat-icon class="brand-icon">mark_email_read</mat-icon>
+    <span class="brand-title">Smart Inbox Assistant</span>
+    <span class="brand-badge">Healthcare PV</span>
+  </div>
+
+  <span class="spacer"></span>
+
+  <nav class="nav-links">
+    <a mat-button routerLink="/messages" routerLinkActive="active-link">
+      <mat-icon>inbox</mat-icon> Triage Queue
+    </a>
+    <a mat-button routerLink="/batch" routerLinkActive="active-link">
+      <mat-icon>playlist_play</mat-icon> Batch Runner
+    </a>
+    <a mat-button routerLink="/literature" routerLinkActive="active-link">
+      <mat-icon>menu_book</mat-icon> Literature Screening
+    </a>
+  </nav>
+</mat-toolbar>
+
+<main class="main-content">
+  <router-outlet></router-outlet>
+</main>

@@ -1,0 +1,29 @@
+{
+  "id": 93,
+  "sourceType": "EMAIL",
+  "sender": "Dr. Mitsuki Sato (佐藤 美月) <m.sato@sakuraclinic-example.jp>",
+  "subject": "Adverse event report from our clinic in Japan (form in Japanese, attached)",
+  "receivedDate": "2026-08-25T12:20:00",
+  "bodyText": "Dear Safety Team,\n\nI am reporting an adverse event on behalf of our clinic in Japan. Our standard reporting\nform is completed in Japanese - please see the attached PDF for the full report.\n\nBriefly: a 47-year-old male patient developed a widespread rash and strong itching\napproximately 12 days after starting Nortavex 40 mg daily, along with a mild fever\n(37.8C). Symptoms gradually improved over 5 days after the medication was stopped, and\nhospitalization was not required.\n\nPlease let us know if a full English translation is needed for your internal review, or\nif your team is able to process the Japanese form directly.\n\nBest regards,\nDr. Mitsuki Sato\nSakura Naika Clinic\n\n",
+  "messageIdHeader": "<email_13_safety_japanese@synthetic-test-mailbox.example.com>",
+  "createdAt": "2026-09-06T17:52:11.298454",
+  "status": "REVIEWED",
+  "classifications": [],
+  "attachments": [
+    {
+      "id": 69,
+      "filename": "pdf_nonenglish_02_japanese.pdf",
+      "contentType": "application/pdf",
+      "pdfType": null,
+      "loggedOnly": false,
+      "summary": null,
+      "tables": [],
+      "images": [],
+      "translation": null,
+      "isPdf": true,
+      "pdf": true
+    }
+  ],
+  "extractedFields": [],
+  "reviewActions": []
+}

@@ -1,0 +1,29 @@
+{
+  "id": 91,
+  "sourceType": "EMAIL",
+  "sender": "Rural Health Post - Records Office <reports@fictional-ruralhealthpost-example.com>",
+  "subject": "Scanned adverse event form - patient reaction to Verolan",
+  "receivedDate": "2026-08-24T17:45:00",
+  "bodyText": "To Whom It May Concern,\n\nAttached is a scan of a hand-completed adverse event report form from one of our field\nnurses. Our outreach clinic does not have digital intake terminals, so all reports from\nthis site are completed on paper and scanned before submission.\n\nThe form describes a 57-year-old female patient who developed a rash and mild swelling\nafter starting Drug \"Verolan.\" The handwriting on this particular form is clear and\nlegible throughout.\n\nPlease process at your earliest convenience.\n\nRecords Office\nRural Health Post\n\n",
+  "messageIdHeader": "<email_11_safety_scanned@synthetic-test-mailbox.example.com>",
+  "createdAt": "2026-09-06T17:52:11.141284",
+  "status": "REVIEWED",
+  "classifications": [],
+  "attachments": [
+    {
+      "id": 67,
+      "filename": "pdf_scanned_01_handwritten_form.pdf",
+      "contentType": "application/pdf",
+      "pdfType": null,
+      "loggedOnly": false,
+      "summary": null,
+      "tables": [],
+      "images": [],
+      "translation": null,
+      "isPdf": true,
+      "pdf": true
+    }
+  ],
+  "extractedFields": [],
+  "reviewActions": []
+}

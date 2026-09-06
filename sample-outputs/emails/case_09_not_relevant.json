@@ -1,0 +1,23 @@
+{
+  "id": 89,
+  "sourceType": "EMAIL",
+  "sender": "Fictional Health & Wellness Newsletter <newsletter@fictional-healthwellness-example.com>",
+  "subject": "This Month's Wellness Tips: 5 Ways to Boost Your Energy!",
+  "receivedDate": "2026-08-17T12:30:00",
+  "bodyText": "Hi there,\n\nCheck out this month's top wellness tips from our team:\n\n1. Stay hydrated - aim for 8 glasses of water a day!\n2. Get moving - even a 10-minute walk can boost your mood.\n3. Prioritize sleep - 7-9 hours is the sweet spot for most adults.\n4. Try a new healthy recipe this week - see our featured smoothie bowl below.\n5. Take a screen break every hour.\n\nDon't forget to follow us on social media for daily tips and community stories!\n\nUnsubscribe | Update preferences | View in browser\n\nFictional Health & Wellness Newsletter (this is a marketing email, not related to any\npatient safety matter)\n\n",
+  "messageIdHeader": "<email_09_not_relevant@synthetic-test-mailbox.example.com>",
+  "createdAt": "2026-09-06T17:52:11.059327",
+  "status": "PENDING_REVIEW",
+  "classifications": [
+    {
+      "id": 164,
+      "category": "NOT_RELEVANT",
+      "confidence": 1.0,
+      "reason": "This is a marketing email with wellness tips and an explicit disclaimer that it is not related to any patient safety matter.",
+      "reviewerStatus": "PENDING"
+    }
+  ],
+  "attachments": [],
+  "extractedFields": [],
+  "reviewActions": []
+}

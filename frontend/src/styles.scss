@@ -1,0 +1,181 @@
+@import '@angular/material/prebuilt-themes/indigo-pink.css';
+
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  background-color: #f8fafc;
+  color: #1e293b;
+}
+
+/* Common Badges */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 8px;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+
+  &.high {
+    background-color: #dcfce7;
+    color: #166534;
+  }
+  &.medium {
+    background-color: #fef3c7;
+    color: #92400e;
+  }
+  &.low {
+    background-color: #fee2e2;
+    color: #991b1b;
+  }
+}
+
+.category-badge {
+  display: inline-block;
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  margin-right: 4px;
+  margin-bottom: 2px;
+
+  &.SAFETY_REPORT {
+    background-color: #fee2e2;
+    color: #b91c1c;
+    border: 1px solid #fca5a5;
+  }
+  &.QUALITY_COMPLAINT {
+    background-color: #ffedd5;
+    color: #c2410c;
+    border: 1px solid #fdba74;
+  }
+  &.INFO_REQUEST {
+    background-color: #e0f2fe;
+    color: #0369a1;
+    border: 1px solid #7dd3fc;
+  }
+  &.NOT_RELEVANT {
+    background-color: #f1f5f9;
+    color: #64748b;
+    border: 1px solid #cbd5e1;
+  }
+}
+
+.pdf-type-badge {
+  font-size: 0.7rem;
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-weight: 700;
+  text-transform: uppercase;
+  background-color: #e2e8f0;
+  color: #334155;
+}
+
+/* Card elevation & corners */
+.mat-mdc-card {
+  border-radius: 8px !important;
+  box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1) !important;
+}
+
+/* Clinical Urgency Badges */
+.urgency-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+
+  &.CRITICAL {
+    background-color: #fee2e2;
+    color: #991b1b;
+    border: 1px solid #f87171;
+  }
+  &.WARNING {
+    background-color: #ffedd5;
+    color: #9a3412;
+    border: 1px solid #fb923c;
+  }
+  &.INFO {
+    background-color: #e0f2fe;
+    color: #0369a1;
+    border: 1px solid #38bdf8;
+  }
+  &.ROUTINE {
+    background-color: #f1f5f9;
+    color: #475569;
+    border: 1px solid #cbd5e1;
+  }
+}
+
+/* SLA Countdown Chips */
+.sla-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 7px;
+  border-radius: 9999px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  background-color: #eff6ff;
+  color: #1d4ed8;
+  border: 1px solid #bfdbfe;
+
+  mat-icon {
+    font-size: 14px;
+    width: 14px;
+    height: 14px;
+  }
+
+  &.urgent {
+    background-color: #fef2f2;
+    color: #b91c1c;
+    border-color: #fecaca;
+    animation: pulse-border 2s infinite;
+  }
+
+  &.expired {
+    background-color: #450a0a;
+    color: #ffffff;
+    border-color: #991b1b;
+  }
+}
+
+@keyframes pulse-border {
+  0%, 100% { border-color: #fecaca; }
+  50% { border-color: #ef4444; }
+}
+
+/* "Not stated" Clinical Token */
+.not-stated-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.72rem;
+  font-style: italic;
+  background: #f1f5f9;
+  color: #64748b;
+  border: 1px dashed #cbd5e1;
+}
+
+/* Container spacing */
+.page-container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+/* Full workbench view (Detail view) */
+.workbench-container {
+  height: calc(100vh - 64px);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}

@@ -1,0 +1,37 @@
+{
+  "id": 47,
+  "sourceType": "LITERATURE",
+  "sender": "Literature Article: article_03_not_reportable.pdf",
+  "subject": "article_03_not_reportable.pdf - Case #1",
+  "receivedDate": "2026-09-05T15:44:50.613764",
+  "bodyText": "This article is a narrative review discussing the general mechanisms of hepatic drug metabolism in antiviral therapeutics. It provides a broad overview of how various antiviral drugs are processed by the liver, including enzymatic pathways and potential drug-drug interactions. The text focuses on theoretical and biochemical concepts rather than specific clinical case studies. No individual patient is identified in the text. No specific adverse reactions experienced by an identifiable patient are reported. Therefore, the article lacks any reportable patient case data for pharmacovigilance screening. The document serves purely as an educational and scientific literature review.",
+  "messageIdHeader": "lit-case-f3a0b097-4910-4de1-a2a0-b18b894304ad",
+  "createdAt": "2026-09-05T15:44:50.614421",
+  "status": "PENDING_REVIEW",
+  "classifications": [
+    {
+      "id": 84,
+      "category": "NOT_RELEVANT",
+      "confidence": 0.9,
+      "reason": "The article is a general review of hepatic drug metabolism in antiviral therapeutics and describes no individual patient cases.",
+      "reviewerStatus": "PENDING"
+    }
+  ],
+  "attachments": [
+    {
+      "id": 23,
+      "filename": "article_03_not_reportable.pdf",
+      "contentType": "application/pdf",
+      "pdfType": "ARTICLE",
+      "loggedOnly": false,
+      "summary": null,
+      "tables": [],
+      "images": [],
+      "translation": null,
+      "isPdf": true,
+      "pdf": true
+    }
+  ],
+  "extractedFields": [],
+  "reviewActions": []
+}

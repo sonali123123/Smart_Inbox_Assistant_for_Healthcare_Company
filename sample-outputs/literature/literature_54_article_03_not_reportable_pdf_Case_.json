@@ -1,0 +1,37 @@
+{
+  "id": 54,
+  "sourceType": "LITERATURE",
+  "sender": "Literature Article: article_03_not_reportable.pdf",
+  "subject": "article_03_not_reportable.pdf - Case #1",
+  "receivedDate": "2026-09-05T15:46:50.493615",
+  "bodyText": "The provided text contains no article content, clinical case descriptions, or identifiable patient information. It is completely blank. Therefore, no individual patient cases can be extracted or evaluated for adverse drug reactions. There are no pharmaceutical products mentioned. There are no patient demographics, medical histories, or clinical outcomes available. Consequently, this submission does not fulfill the criteria for a reportable safety case. No further safety follow-up or processing is required for this blank text entry.",
+  "messageIdHeader": "lit-case-3b96e7c2-7863-4258-ba30-d3be28999e8e",
+  "createdAt": "2026-09-05T15:46:50.494022",
+  "status": "PENDING_REVIEW",
+  "classifications": [
+    {
+      "id": 88,
+      "category": "NOT_RELEVANT",
+      "confidence": 0.9,
+      "reason": "The provided article text is entirely empty and contains no patient cases.",
+      "reviewerStatus": "PENDING"
+    }
+  ],
+  "attachments": [
+    {
+      "id": 26,
+      "filename": "article_03_not_reportable.pdf",
+      "contentType": "application/pdf",
+      "pdfType": "ARTICLE",
+      "loggedOnly": false,
+      "summary": null,
+      "tables": [],
+      "images": [],
+      "translation": null,
+      "isPdf": true,
+      "pdf": true
+    }
+  ],
+  "extractedFields": [],
+  "reviewActions": []
+}

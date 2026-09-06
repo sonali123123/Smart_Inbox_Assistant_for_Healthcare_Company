@@ -1,0 +1,236 @@
+{
+  "id": 81,
+  "sourceType": "EMAIL",
+  "sender": "Dr. Alina Foster <a.foster@meridianclinic-example.ca>",
+  "subject": "Adverse reaction report - patient hospitalized after Nortavex",
+  "receivedDate": "2026-08-14T21:12:00",
+  "bodyText": "Hello Safety Team,\n\nI am writing to report an adverse reaction in one of my patients, a 68-year-old male\n(initials R.K.), who was taking Nortavex 40 mg once daily for the past 9 days.\n\nApproximately 45 minutes after his ninth dose (taken 13-Aug-2026), the patient developed\nacute generalized urticaria and facial swelling. He was brought to our clinic and then\ntransferred for observation; he was hospitalized for 18 hours and treated with\nantihistamines and a corticosteroid. He has since been discharged and is recovering well.\n\nI have completed and attached our internal Adverse Event Report Form, which includes his\nlab values during the hospitalization (WBC, CRP, eosinophils) tracked over three days, as\nwell as full patient, reporter, and product details.\n\nPlease let me know if any additional information is needed.\n\nBest regards,\nDr. Alina Foster\nMeridian Family Health Clinic, Springvale\nTreating Physician\n\n",
+  "messageIdHeader": "<email_01_safety_full@synthetic-test-mailbox.example.com>",
+  "createdAt": "2026-09-06T17:52:10.451095",
+  "status": "PENDING_REVIEW",
+  "classifications": [
+    {
+      "id": 161,
+      "category": "SAFETY_REPORT",
+      "confidence": 1.0,
+      "reason": "A patient experienced acute generalized urticaria and facial swelling after taking Nortavex.",
+      "reviewerStatus": "PENDING"
+    }
+  ],
+  "attachments": [
+    {
+      "id": 61,
+      "filename": "pdf_digital_01_form_with_table.pdf",
+      "contentType": "application/pdf",
+      "pdfType": "DIGITAL",
+      "loggedOnly": false,
+      "summary": {
+        "id": 22,
+        "summaryText": "This document is an adverse event report form originating from the Meridian Family Health Clinic regarding a patient experiencing an acute reaction. The form details patient information for a 68-year-old male with initials R.K. who experienced an adverse event. Reporter information indicates the case was submitted by treating physician Dr. Alina Foster in Canada. The suspect product is identified as Nortavex administered at an oral dose of 40 mg once daily starting on August 2, 2026. The patient developed acute generalized urticaria and facial swelling approximately 45 minutes after taking his ninth dose on August 13, 2026. The reaction prompted a hospitalization for observation lasting 18 hours. During this stay, the patient's symptoms successfully resolved following treatment with antihistamines and corticosteroids. Inpatient laboratory values tracking white blood cell count, C-reactive protein, and eosinophil percentages across three dates are explicitly provided in a structured table. Additional clinical notes state the patient had no prior reactions to this drug class and that concurrent medications remained unchanged. The document is explicitly labeled as a fictional, synthetically generated report created for software testing purposes only. Despite its synthetic nature, it perfectly mimics a real clinical safety intake document suitable for a patient safety monitoring workflow. Therefore, it is thoroughly relevant to pharmaceutical safety monitoring and quality complaint tracking systems. The structured fields and lab tables provide clear, actionable parameters for causality assessment and case processing.",
+        "relevanceOpinion": "RELEVANT",
+        "relevanceReason": "The document contains a complete adverse event report detailing a serious reaction and hospitalization associated with a suspect product."
+      },
+      "tables": [
+        {
+          "id": 156,
+          "pageNumber": 2,
+          "tableJson": "[[\"Lab Parameter\",\"13-Aug-2026\\n(admission)\",\"14-Aug-2026\",\"15-Aug-2026\\n(discharge)\"],[\"WBC (x10^9/L)\",\"12.4\",\"9.8\",\"7.6\"],[\"CRP (mg/L)\",\"38\",\"21\",\"9\"],[\"Eosinophils (%)\",\"6.2\",\"4.0\",\"2.1\"]]"
+        }
+      ],
+      "images": [],
+      "translation": null,
+      "isPdf": true,
+      "pdf": true
+    }
+  ],
+  "extractedFields": [
+    {
+      "id": 1499,
+      "attachmentId": null,
+      "fieldGroup": "PATIENT",
+      "fieldName": "age",
+      "fieldValue": "68 years",
+      "confidence": 1.0,
+      "sourceType": "EMAIL",
+      "sourceRef": "email",
+      "reviewerEdited": false
+    },
+    {
+      "id": 1500,
+      "attachmentId": null,
+      "fieldGroup": "PATIENT",
+      "fieldName": "sex",
+      "fieldValue": "Male",
+      "confidence": 1.0,
+      "sourceType": "EMAIL",
+      "sourceRef": "email",
+      "reviewerEdited": false
+    },
+    {
+      "id": 1501,
+      "attachmentId": null,
+      "fieldGroup": "PATIENT",
+      "fieldName": "weightHeight",
+      "fieldValue": "82 kg / 175 cm",
+      "confidence": 1.0,
+      "sourceType": "PDF_PAGE",
+      "sourceRef": "attachment:61,page:1",
+      "reviewerEdited": false
+    },
+    {
+      "id": 1502,
+      "attachmentId": null,
+      "fieldGroup": "PATIENT",
+      "fieldName": "relevantHistory",
+      "fieldValue": "Type 2 diabetes (diagnosed 2014); hypertension, well controlled",
+      "confidence": 1.0,
+      "sourceType": "PDF_PAGE",
+      "sourceRef": "attachment:61,page:1",
+      "reviewerEdited": false
+    },
+    {
+      "id": 1503,
+      "attachmentId": null,
+      "fieldGroup": "REPORTER",
+      "fieldName": "name",
+      "fieldValue": "Dr. Alina Foster",
+      "confidence": 1.0,
+      "sourceType": "EMAIL",
+      "sourceRef": "email",
+      "reviewerEdited": false
+    },
+    {
+      "id": 1504,
+      "attachmentId": null,
+      "fieldGroup": "REPORTER",
+      "fieldName": "role",
+      "fieldValue": "Treating Physician",
+      "confidence": 1.0,
+      "sourceType": "EMAIL",
+      "sourceRef": "email",
+      "reviewerEdited": false
+    },
+    {
+      "id": 1505,
+      "attachmentId": null,
+      "fieldGroup": "REPORTER",
+      "fieldName": "country",
+      "fieldValue": "Canada",
+      "confidence": 1.0,
+      "sourceType": "PDF_PAGE",
+      "sourceRef": "attachment:61,page:1",
+      "reviewerEdited": false
+    },
+    {
+      "id": 1506,
+      "attachmentId": null,
+      "fieldGroup": "PRODUCT",
+      "fieldName": "name",
+      "fieldValue": "Nortavex",
+      "confidence": 1.0,
+      "sourceType": "EMAIL",
+      "sourceRef": "email",
+      "reviewerEdited": false
+    },
+    {
+      "id": 1507,
+      "attachmentId": null,
+      "fieldGroup": "PRODUCT",
+      "fieldName": "dose",
+      "fieldValue": "40 mg once daily",
+      "confidence": 1.0,
+      "sourceType": "EMAIL",
+      "sourceRef": "email",
+      "reviewerEdited": false
+    },
+    {
+      "id": 1508,
+      "attachmentId": null,
+      "fieldGroup": "PRODUCT",
+      "fieldName": "route",
+      "fieldValue": "Oral",
+      "confidence": 1.0,
+      "sourceType": "PDF_PAGE",
+      "sourceRef": "attachment:61,page:1",
+      "reviewerEdited": false
+    },
+    {
+      "id": 1509,
+      "attachmentId": null,
+      "fieldGroup": "PRODUCT",
+      "fieldName": "startDate",
+      "fieldValue": "02-Aug-2026",
+      "confidence": 1.0,
+      "sourceType": "PDF_PAGE",
+      "sourceRef": "attachment:61,page:1",
+      "reviewerEdited": false
+    },
+    {
+      "id": 1510,
+      "attachmentId": null,
+      "fieldGroup": "PRODUCT",
+      "fieldName": "stopDate",
+      "fieldValue": "13-Aug-2026",
+      "confidence": 1.0,
+      "sourceType": "PDF_PAGE",
+      "sourceRef": "attachment:61,page:1",
+      "reviewerEdited": false
+    },
+    {
+      "id": 1511,
+      "attachmentId": null,
+      "fieldGroup": "REACTION",
+      "fieldName": "description",
+      "fieldValue": "Acute generalized urticaria and facial swelling",
+      "confidence": 1.0,
+      "sourceType": "EMAIL",
+      "sourceRef": "email",
+      "reviewerEdited": false
+    },
+    {
+      "id": 1512,
+      "attachmentId": null,
+      "fieldGroup": "REACTION",
+      "fieldName": "onset",
+      "fieldValue": "Approximately 45 minutes after the ninth dose",
+      "confidence": 1.0,
+      "sourceType": "EMAIL",
+      "sourceRef": "email",
+      "reviewerEdited": false
+    },
+    {
+      "id": 1513,
+      "attachmentId": null,
+      "fieldGroup": "REACTION",
+      "fieldName": "outcome",
+      "fieldValue": "Hospitalized for 18 hours and treated with antihistamines and a corticosteroid; recovering well",
+      "confidence": 1.0,
+      "sourceType": "EMAIL",
+      "sourceRef": "email",
+      "reviewerEdited": false
+    },
+    {
+      "id": 1514,
+      "attachmentId": null,
+      "fieldGroup": "SEVERITY",
+      "fieldName": "level",
+      "fieldValue": "Hospitalization",
+      "confidence": 1.0,
+      "sourceType": "EMAIL",
+      "sourceRef": "email",
+      "reviewerEdited": false
+    },
+    {
+      "id": 1515,
+      "attachmentId": null,
+      "fieldGroup": "NARRATIVE",
+      "fieldName": "narrative",
+      "fieldValue": "A 68-year-old male patient taking Nortavex 40 mg once daily developed acute generalized urticaria and facial swelling approximately 45 minutes after his ninth dose. He was hospitalized for 18 hours, treated with antihistamines and a corticosteroid, and has since been discharged while recovering well.",
+      "confidence": 1.0,
+      "sourceType": "EMAIL",
+      "sourceRef": "email",
+      "reviewerEdited": false
+    }
+  ],
+  "reviewActions": []
+}

@@ -1,0 +1,471 @@
+<div class="workbench-layout" *ngIf="message">
+
+  <!-- Top Header Navigation & Identity -->
+  <header class="workbench-header">
+    <div class="header-left">
+      <button mat-button routerLink="/messages" class="back-link">
+        <mat-icon>arrow_back</mat-icon> Queue
+      </button>
+      <div class="header-title-box">
+        <span class="badge" [ngClass]="message.status === 'REVIEWED' ? 'high' : 'medium'">
+          {{ message.status === 'PENDING_REVIEW' ? 'Pending Review' : 'Reviewed' }}
+        </span>
+        <span class="case-id">Case #{{ message.id }}</span>
+        <h2 class="message-title" [title]="message.subject">{{ message.subject }}</h2>
+      </div>
+    </div>
+
+    <div class="header-right">
+      <div class="reviewer-identity-box">
+        <mat-icon inline>verified_user</mat-icon>
+        <span class="role-label">Reviewer:</span>
+        <input class="reviewer-input" [(ngModel)]="reviewerName" (change)="saveReviewerIdentity()" placeholder="Reviewer Name">
+      </div>
+      <button mat-flat-button color="primary" class="accelerator-btn" (click)="approveAndNextCase()" title="Alt + Enter">
+        <mat-icon>check_circle</mat-icon> Approve & Next
+      </button>
+    </div>
+  </header>
+
+  <!-- Split Screen Body -->
+  <div class="workbench-body">
+
+    <!-- LEFT PANE: Source Evidence & Document Viewer (50%) -->
+    <section class="workbench-pane evidence-pane">
+      <div class="pane-header">
+        <div class="pane-title">
+          <mat-icon color="primary">find_in_page</mat-icon>
+          <span>Source Document & Evidence</span>
+        </div>
+
+        <!-- If attachments exist, let reviewer select -->
+        <div class="att-selector" *ngIf="message.attachments && message.attachments.length > 0">
+          <mat-select [value]="selectedAttachment" [compareWith]="compareAttachments" (selectionChange)="selectAttachment($event.value)" class="att-select">
+            <mat-option *ngFor="let att of message.attachments" [value]="att">
+              {{ att.filename }} ({{ att.pdfType || 'PDF' }})
+            </mat-option>
+          </mat-select>
+        </div>
+      </div>
+
+      <!-- Tab Group for Left Pane -->
+      <mat-tab-group [(selectedIndex)]="selectedLeftTab" (selectedIndexChange)="onTabChanged($event)" animationDuration="0ms" class="evidence-tabs">
+
+        <!-- Tab 0: PDF Document Preview -->
+        <mat-tab>
+          <ng-template mat-tab-label>
+            <mat-icon inline class="tab-icon">picture_as_pdf</mat-icon>
+            PDF Viewer <span *ngIf="selectedAttachment" class="tab-badge">({{ selectedAttachment.pdfType || 'PDF' }})</span>
+          </ng-template>
+
+          <div class="pdf-tab-content">
+            <div class="pdf-viewer-bar" *ngIf="selectedAttachment">
+              <span class="pdf-doc-name">{{ activePdfTitle }}</span>
+              <span class="pdf-page-indicator" *ngIf="activePageNumber">Page {{ activePageNumber }}</span>
+              <span class="spacer"></span>
+              <a mat-button color="primary" [href]="activePdfUrl | safeUrl" target="_blank" title="Open PDF in new tab">
+                <mat-icon>open_in_new</mat-icon> Fullscreen
+              </a>
+            </div>
+
+            <div class="pdf-frame-container" *ngIf="activePdfUrl; else noPdf">
+              <iframe [src]="activePdfUrl | safeUrl" class="pdf-iframe"></iframe>
+            </div>
+            <ng-template #noPdf>
+              <div class="empty-evidence-state">
+                <mat-icon class="large-icon">description</mat-icon>
+                <p>No PDF attachment selected or message has no attachments.</p>
+                <div *ngIf="message.attachments && message.attachments.length > 0" style="margin-bottom: 12px;">
+                  <button mat-flat-button color="primary" (click)="selectAttachment(message.attachments[0])">
+                    <mat-icon>picture_as_pdf</mat-icon> Load {{ message.attachments[0].filename }}
+                  </button>
+                </div>
+                <button mat-stroked-button (click)="selectedLeftTab = 1">View Raw Email Body</button>
+              </div>
+            </ng-template>
+          </div>
+        </mat-tab>
+
+        <!-- Tab 1: Raw Email Body -->
+        <mat-tab>
+          <ng-template mat-tab-label>
+            <mat-icon inline class="tab-icon">email</mat-icon>
+            Email Body
+          </ng-template>
+          <div class="email-tab-content">
+            <div class="email-meta-box">
+              <div><strong>From:</strong> {{ message.sender }}</div>
+              <div><strong>Subject:</strong> {{ message.subject }}</div>
+              <div><strong>Date:</strong> {{ message.receivedDate | date:'medium' }}</div>
+            </div>
+            <pre class="email-body-text">{{ message.bodyText || 'No plain text email body.' }}</pre>
+          </div>
+        </mat-tab>
+
+        <!-- Tab 2: Translations (if present) -->
+        <mat-tab *ngIf="hasTranslations()">
+          <ng-template mat-tab-label>
+            <mat-icon inline class="tab-icon">translate</mat-icon>
+            Translation
+          </ng-template>
+          <div class="tab-scroll-content">
+            <div *ngFor="let att of message.attachments">
+              <div *ngIf="att.translation" class="translation-card">
+                <div class="translation-header">
+                  <strong>Source Language:</strong> {{ att.translation.sourceLanguage }}
+                  <span class="text-muted">({{ att.translation.originalTextRef }})</span>
+                </div>
+                <div class="translation-body">
+                  <pre class="translation-text">{{ att.translation.translatedText }}</pre>
+                </div>
+              </div>
+            </div>
+          </div>
+        </mat-tab>
+
+        <!-- Tab 3: Structured Lab Tables (if present) -->
+        <mat-tab *ngIf="hasTables()">
+          <ng-template mat-tab-label>
+            <mat-icon inline class="tab-icon">table_chart</mat-icon>
+            Lab Tables
+          </ng-template>
+          <div class="tab-scroll-content">
+            <div *ngFor="let att of message.attachments">
+              <div *ngFor="let tbl of att.tables" class="single-table-box">
+                <div class="table-title">Page {{ tbl.pageNumber }} Extracted Table ({{ att.filename }}):</div>
+                <table class="clinical-table" *ngIf="tbl.parsedRows && tbl.parsedRows.length > 0">
+                  <tr *ngFor="let row of tbl.parsedRows; let i = index">
+                    <td *ngFor="let cell of row" [ngClass]="{'header-cell': i === 0}">
+                      {{ cell }}
+                    </td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+          </div>
+        </mat-tab>
+
+        <!-- Tab 4: Detected Images & Defects (if present) -->
+        <mat-tab *ngIf="hasImages()">
+          <ng-template mat-tab-label>
+            <mat-icon inline class="tab-icon">image</mat-icon>
+            Defect Images
+          </ng-template>
+          <div class="tab-scroll-content">
+            <div *ngFor="let att of message.attachments">
+              <div *ngFor="let img of att.images" class="defect-image-card">
+                <div class="defect-header">
+                  <mat-icon color="warn">warning</mat-icon>
+                  <strong>Page {{ img.pageNumber }} Flagged Image ({{ att.filename }})</strong>
+                  <span class="badge medium" *ngIf="img.reviewFlag">Requires Inspection</span>
+                </div>
+                <p class="defect-desc">{{ img.description }}</p>
+
+                <div class="defect-inspection-actions">
+                  <button mat-flat-button color="primary" (click)="selectAttachment(att, img.pageNumber)">
+                    <mat-icon>visibility</mat-icon> View Image on Page {{ img.pageNumber }} in PDF Viewer
+                  </button>
+                  <a mat-stroked-button [href]="messageService.getAttachmentFileUrl(att.id) + '#page=' + img.pageNumber" target="_blank">
+                    <mat-icon>open_in_new</mat-icon> Open Fullscreen
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div class="image-inspection-note">
+              <mat-icon inline>info</mat-icon>
+              <span>Per regulatory compliance guidelines, the AI flags meaningful photos/figures and generates a descriptive finding. To inspect the full-resolution raster photo, use the button above to jump directly to that page in the PDF Viewer.</span>
+            </div>
+          </div>
+        </mat-tab>
+
+      </mat-tab-group>
+    </section>
+
+    <!-- RIGHT PANE: Human-in-the-Loop Decision Workbench (50%) -->
+    <section class="workbench-pane decision-pane">
+
+      <!-- AI Multi-Label Classification Section -->
+      <mat-card class="review-section-card">
+        <mat-card-header class="section-header">
+          <mat-card-title class="section-title">
+            <mat-icon color="primary">category</mat-icon> AI Multi-Label Classification
+          </mat-card-title>
+          <button mat-stroked-button color="primary" (click)="acceptAllClassifications()" title="Alt+A">
+            <mat-icon>done_all</mat-icon> Accept All
+          </button>
+        </mat-card-header>
+
+        <mat-card-content class="pt-3">
+          <div class="classification-cards-list">
+            <div class="class-review-item" *ngFor="let c of message.classifications">
+              <div class="class-item-top">
+                <div class="class-badges">
+                  <span class="category-badge {{ c.category }} large">
+                    {{ c.category.replace('_', ' ') }}
+                  </span>
+                  <span class="badge {{ getConfidenceClass(c.confidence) }}">
+                    {{ (c.confidence * 100).toFixed(0) }}% Confidence
+                  </span>
+                </div>
+                <span class="review-status-pill" [ngClass]="c.reviewerStatus">
+                  {{ c.reviewerStatus }}
+                </span>
+              </div>
+
+              <div class="class-rationale">
+                <strong>AI Rationale:</strong> {{ c.reason }}
+              </div>
+
+              <div class="class-action-row">
+                <button mat-flat-button color="primary" (click)="acceptClassification(c)" [disabled]="c.reviewerStatus === 'ACCEPTED'">
+                  <mat-icon>check_circle</mat-icon> Accept
+                </button>
+                <button mat-stroked-button color="warn" (click)="openOverrideDialog(c)">
+                  <mat-icon>edit</mat-icon> Override
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Override Inline Drawer -->
+          <div class="override-panel" *ngIf="overrideTargetClassification">
+            <div class="override-title">Override Classification: {{ overrideTargetClassification.category }}</div>
+            <div class="override-controls">
+              <mat-form-field appearance="outline" class="override-select">
+                <mat-label>Select New Category</mat-label>
+                <mat-select [(ngModel)]="overrideNewCategory">
+                  <mat-option value="SAFETY_REPORT">Safety Report</mat-option>
+                  <mat-option value="QUALITY_COMPLAINT">Quality Complaint</mat-option>
+                  <mat-option value="INFO_REQUEST">Info Request</mat-option>
+                  <mat-option value="NOT_RELEVANT">Not Relevant</mat-option>
+                </mat-select>
+              </mat-form-field>
+              <button mat-flat-button color="warn" (click)="confirmOverride()">Apply</button>
+              <button mat-button (click)="cancelOverride()">Cancel</button>
+            </div>
+          </div>
+        </mat-card-content>
+      </mat-card>
+
+      <!-- Reason for Change Prompt Modal -->
+      <div class="reason-modal-backdrop" *ngIf="reasonPromptField">
+        <div class="reason-modal-card">
+          <div class="reason-modal-header">
+            <mat-icon color="primary">rate_review</mat-icon>
+            <h3>GxP Reason for Change: {{ reasonPromptField.fieldName }}</h3>
+          </div>
+          <p class="reason-subtext">21 CFR Part 11 / GxP compliance requires a documented justification when modifying clinical extracted facts.</p>
+
+          <mat-form-field appearance="outline" class="w-100 mb-2">
+            <mat-label>Select Justification</mat-label>
+            <mat-select [(ngModel)]="selectedReason">
+              <mat-option *ngFor="let r of standardReasons" [value]="r">{{ r }}</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="w-100 mb-3" *ngIf="selectedReason === 'Other clinical rationale'">
+            <mat-label>Specify Clinical Rationale</mat-label>
+            <input matInput [(ngModel)]="customReason" placeholder="Enter reason for alteration...">
+          </mat-form-field>
+
+          <div class="reason-actions">
+            <button mat-flat-button color="primary" (click)="confirmSaveWithReason()">Confirm & Log Audit</button>
+            <button mat-button (click)="cancelReasonPrompt()">Cancel</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Structured Facts Extraction Section -->
+      <mat-card class="review-section-card">
+        <mat-card-header class="section-header">
+          <mat-card-title class="section-title">
+            <mat-icon color="primary">fact_check</mat-icon> Structured Facts Extraction
+          </mat-card-title>
+          <span class="section-hint">Click source link to jump left viewer to evidence</span>
+        </mat-card-header>
+
+        <mat-card-content class="pt-3">
+          <mat-accordion multi class="facts-accordion">
+
+            <!-- Patient Group -->
+            <mat-expansion-panel [expanded]="true" *ngIf="getFieldsByGroup('PATIENT').length > 0">
+              <mat-expansion-panel-header>
+                <mat-panel-title><strong>Patient Information</strong></mat-panel-title>
+                <mat-panel-description>Age, sex, medical history</mat-panel-description>
+              </mat-expansion-panel-header>
+              <ng-container *ngTemplateOutlet="fieldGroupTpl; context: { fields: getFieldsByGroup('PATIENT') }"></ng-container>
+            </mat-expansion-panel>
+
+            <!-- Reporter Group -->
+            <mat-expansion-panel [expanded]="true" *ngIf="getFieldsByGroup('REPORTER').length > 0">
+              <mat-expansion-panel-header>
+                <mat-panel-title><strong>Reporter Details</strong></mat-panel-title>
+                <mat-panel-description>Name, role, country</mat-panel-description>
+              </mat-expansion-panel-header>
+              <ng-container *ngTemplateOutlet="fieldGroupTpl; context: { fields: getFieldsByGroup('REPORTER') }"></ng-container>
+            </mat-expansion-panel>
+
+            <!-- Product Group -->
+            <mat-expansion-panel [expanded]="true" *ngIf="getFieldsByGroup('PRODUCT').length > 0">
+              <mat-expansion-panel-header>
+                <mat-panel-title><strong>Suspect Product</strong></mat-panel-title>
+                <mat-panel-description>Drug, dosage, route, therapy dates</mat-panel-description>
+              </mat-expansion-panel-header>
+              <ng-container *ngTemplateOutlet="fieldGroupTpl; context: { fields: getFieldsByGroup('PRODUCT') }"></ng-container>
+            </mat-expansion-panel>
+
+            <!-- Reaction Group -->
+            <mat-expansion-panel [expanded]="true" *ngIf="getFieldsByGroup('REACTION').length > 0">
+              <mat-expansion-panel-header>
+                <mat-panel-title><strong>Adverse Event / Reaction</strong></mat-panel-title>
+                <mat-panel-description>Symptoms, onset, clinical outcome</mat-panel-description>
+              </mat-expansion-panel-header>
+              <ng-container *ngTemplateOutlet="fieldGroupTpl; context: { fields: getFieldsByGroup('REACTION') }"></ng-container>
+            </mat-expansion-panel>
+
+            <!-- Severity & Narrative -->
+            <mat-expansion-panel [expanded]="true" *ngIf="getFieldsByGroup('SEVERITY').length > 0 || getFieldsByGroup('NARRATIVE').length > 0">
+              <mat-expansion-panel-header>
+                <mat-panel-title><strong>Severity Criteria & Plain-Language Narrative</strong></mat-panel-title>
+                <mat-panel-description>Seriousness criteria & summary</mat-panel-description>
+              </mat-expansion-panel-header>
+              <ng-container *ngTemplateOutlet="fieldGroupTpl; context: { fields: getFieldsByGroup('SEVERITY') }"></ng-container>
+              <div class="mt-3" *ngIf="getFieldsByGroup('NARRATIVE').length > 0">
+                <ng-container *ngTemplateOutlet="fieldGroupTpl; context: { fields: getFieldsByGroup('NARRATIVE') }"></ng-container>
+              </div>
+            </mat-expansion-panel>
+
+            <!-- Quality Complaint Group -->
+            <mat-expansion-panel [expanded]="true" *ngIf="getFieldsByGroup('QC').length > 0">
+              <mat-expansion-panel-header>
+                <mat-panel-title><strong>Quality Complaint Details</strong></mat-panel-title>
+                <mat-panel-description>Batch/lot number, defect description</mat-panel-description>
+              </mat-expansion-panel-header>
+              <ng-container *ngTemplateOutlet="fieldGroupTpl; context: { fields: getFieldsByGroup('QC') }"></ng-container>
+            </mat-expansion-panel>
+
+            <!-- Info Request Group -->
+            <mat-expansion-panel [expanded]="true" *ngIf="getFieldsByGroup('INFO_REQUEST').length > 0">
+              <mat-expansion-panel-header>
+                <mat-panel-title><strong>Medical Information Request</strong></mat-panel-title>
+                <mat-panel-description>Inquiries, questions</mat-panel-description>
+              </mat-expansion-panel-header>
+              <ng-container *ngTemplateOutlet="fieldGroupTpl; context: { fields: getFieldsByGroup('INFO_REQUEST') }"></ng-container>
+            </mat-expansion-panel>
+
+          </mat-accordion>
+
+          <!-- Field Group Template -->
+          <ng-template #fieldGroupTpl let-fields="fields">
+            <div class="facts-list">
+              <div class="fact-row" *ngFor="let f of fields" [class.edited-row]="f.reviewerEdited">
+                <div class="fact-meta">
+                  <span class="fact-label">{{ f.fieldName }}</span>
+                  <div class="fact-badges">
+                    <span class="badge {{ getConfidenceClass(f.confidence) }}" *ngIf="f.fieldValue !== 'Not stated'">
+                      {{ f.confidence ? (f.confidence * 100).toFixed(0) + '%' : 'Confirmed' }}
+                    </span>
+                    <span class="source-link" *ngIf="f.sourceRef" (click)="handleSourceNavigation(f.sourceRef)" [title]="'Source: ' + f.sourceRef + ' (click to navigate evidence)'">
+                      <mat-icon inline>link</mat-icon> {{ formatSourceRef(f.sourceRef) }}
+                    </span>
+                    <span class="edited-tag" *ngIf="f.reviewerEdited">[Reviewer Edited]</span>
+                  </div>
+                </div>
+
+                <div class="fact-input-wrapper">
+                  <!-- Controlled Select for Sex -->
+                  <mat-form-field appearance="outline" class="w-100" *ngIf="f.fieldName === 'sex'">
+                    <mat-select [(ngModel)]="f.fieldValue" (selectionChange)="promptEditField(f)">
+                      <mat-option *ngFor="let opt of sexOptions" [value]="opt">{{ opt }}</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+
+                  <!-- Controlled Select for Severity Level -->
+                  <mat-form-field appearance="outline" class="w-100" *ngIf="f.fieldName === 'level' && f.fieldGroup === 'SEVERITY'">
+                    <mat-select [(ngModel)]="f.fieldValue" (selectionChange)="promptEditField(f)">
+                      <mat-option *ngFor="let opt of severityOptions" [value]="opt">{{ opt }}</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+
+                  <!-- Controlled Select for Route -->
+                  <mat-form-field appearance="outline" class="w-100" *ngIf="f.fieldName === 'route'">
+                    <mat-select [(ngModel)]="f.fieldValue" (selectionChange)="promptEditField(f)">
+                      <mat-option *ngFor="let opt of routeOptions" [value]="opt">{{ opt }}</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+
+                  <!-- Free text input for other fields -->
+                  <mat-form-field appearance="outline" class="w-100" *ngIf="f.fieldName !== 'sex' && f.fieldName !== 'route' && !(f.fieldName === 'level' && f.fieldGroup === 'SEVERITY')" [class.not-stated-field]="f.fieldValue === 'Not stated'">
+                    <input matInput [(ngModel)]="f.fieldValue" (keyup.enter)="promptEditField(f)">
+                  </mat-form-field>
+
+                  <div class="fact-actions">
+                    <button mat-icon-button color="primary" (click)="promptEditField(f)" [disabled]="savingFieldId === f.id" title="Save changes (Enter)">
+                      <mat-icon>{{ savingFieldId === f.id ? 'hourglass_empty' : 'check' }}</mat-icon>
+                    </button>
+                    <button mat-icon-button color="warn" (click)="revertField(f)" *ngIf="f.reviewerEdited" title="Revert to original value">
+                      <mat-icon>undo</mat-icon>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </ng-template>
+
+        </mat-card-content>
+      </mat-card>
+
+      <!-- Audit Trail Timeline Section -->
+      <mat-card class="review-section-card">
+        <mat-card-header class="section-header">
+          <mat-card-title class="section-title">
+            <mat-icon color="primary">history</mat-icon> GxP Audit Trail & Decision Lineage
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content class="pt-3">
+          <div class="audit-timeline" *ngIf="message.reviewActions && message.reviewActions.length > 0; else noActions">
+            <div class="timeline-item" *ngFor="let a of message.reviewActions">
+              <div class="timeline-point"></div>
+              <div class="timeline-content">
+                <div class="timeline-header">
+                  <strong>{{ a.reviewerName }}</strong> &bull;
+                  <span class="badge medium">{{ a.action }}</span>
+                  <span class="timeline-time">{{ a.timestamp | date:'medium' }}</span>
+                </div>
+                <div class="timeline-body">
+                  Target: <code>{{ a.targetRef }}</code>
+                  <div *ngIf="a.previousValue">From: <em>{{ a.previousValue }}</em> &rarr; To: <strong>{{ a.newValue }}</strong></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <ng-template #noActions>
+            <p class="text-muted">No reviewer actions recorded yet. All data is at initial AI state.</p>
+          </ng-template>
+        </mat-card-content>
+      </mat-card>
+
+    </section>
+
+  </div>
+
+  <!-- Sticky Bottom Accelerator Bar -->
+  <footer class="workbench-footer">
+    <div class="footer-left">
+      <span class="shortcut-tip">Shortcuts: <code>Alt+A</code> Accept All &bull; <code>Alt+O</code> Override &bull; <code>Alt+N / Alt+Enter</code> Next Case</span>
+    </div>
+    <div class="footer-actions">
+      <button mat-stroked-button routerLink="/messages" title="Alt+Q">
+        <mat-icon>arrow_back</mat-icon> Back to Queue
+      </button>
+      <button mat-stroked-button color="primary" (click)="acceptAllClassifications()" title="Alt+A">
+        <mat-icon>done_all</mat-icon> Accept All (Alt+A)
+      </button>
+      <button mat-flat-button color="primary" (click)="approveAndNextCase()" title="Alt+Enter">
+        <mat-icon>check_circle</mat-icon> Finalize & Next Case (Alt+Enter)
+      </button>
+    </div>
+  </footer>
+
+</div>

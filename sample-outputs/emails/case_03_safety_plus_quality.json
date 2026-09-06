@@ -1,0 +1,251 @@
+{
+  "id": 83,
+  "sourceType": "EMAIL",
+  "sender": "Nora Patterson, RPh <n.patterson@fictionalpharmacy-example.com>",
+  "subject": "Reaction possibly linked to damaged vial - please review",
+  "receivedDate": "2026-08-16T16:50:00",
+  "bodyText": "Hello,\n\nI wanted to flag an incident from earlier this week. A patient of ours (mid-50s, female)\ncame in for her scheduled injection of Zolapamine. When we opened the box, the vial seal\nwas already broken and slightly discolored around the cap, but we administered the dose\nanyway since we didn't notice it until afterward.\n\nAbout two hours later the patient called to say she was having a strong reaction at the\ninjection site - significant redness, swelling, and some pain radiating up her arm. She\ndid not require hospitalization but was clearly uncomfortable and we advised her to see\nher physician if it worsened overnight.\n\nWe're not sure if the reaction is related to the broken seal or would have happened\nanyway, but wanted to report both issues together since they happened in the same\nincident: (1) the product defect with the broken/discolored vial seal, and (2) the\npatient's reaction following administration.\n\nBatch/lot number from the box was LOT-5820A, if that's useful.\n\nThanks,\nNora Patterson, RPh\nFictional Pharmacy Services\n\n",
+  "messageIdHeader": "<email_03_safety_plus_quality@synthetic-test-mailbox.example.com>",
+  "createdAt": "2026-09-06T17:52:10.751833",
+  "status": "PENDING_REVIEW",
+  "classifications": [
+    {
+      "id": 156,
+      "category": "SAFETY_REPORT",
+      "confidence": 1.0,
+      "reason": "A patient experienced a strong reaction at the injection site after receiving Zolapamine, reported by a pharmacist.",
+      "reviewerStatus": "PENDING"
+    },
+    {
+      "id": 157,
+      "category": "QUALITY_COMPLAINT",
+      "confidence": 1.0,
+      "reason": "The vial seal was broken and slightly discolored around the cap, with batch/lot LOT-5820A provided.",
+      "reviewerStatus": "PENDING"
+    }
+  ],
+  "attachments": [],
+  "extractedFields": [
+    {
+      "id": 1449,
+      "attachmentId": null,
+      "fieldGroup": "PRODUCT",
+      "fieldName": "name",
+      "fieldValue": "Zolapamine",
+      "confidence": 1.0,
+      "sourceType": "EMAIL",
+      "sourceRef": "email",
+      "reviewerEdited": false
+    },
+    {
+      "id": 1450,
+      "attachmentId": null,
+      "fieldGroup": "PRODUCT",
+      "fieldName": "dose",
+      "fieldValue": "Not stated",
+      "confidence": null,
+      "sourceType": null,
+      "sourceRef": null,
+      "reviewerEdited": false
+    },
+    {
+      "id": 1451,
+      "attachmentId": null,
+      "fieldGroup": "PRODUCT",
+      "fieldName": "route",
+      "fieldValue": "injection",
+      "confidence": 1.0,
+      "sourceType": "EMAIL",
+      "sourceRef": "email",
+      "reviewerEdited": false
+    },
+    {
+      "id": 1452,
+      "attachmentId": null,
+      "fieldGroup": "PRODUCT",
+      "fieldName": "startDate",
+      "fieldValue": "earlier this week",
+      "confidence": 1.0,
+      "sourceType": "EMAIL",
+      "sourceRef": "email",
+      "reviewerEdited": false
+    },
+    {
+      "id": 1453,
+      "attachmentId": null,
+      "fieldGroup": "PRODUCT",
+      "fieldName": "stopDate",
+      "fieldValue": "Not stated",
+      "confidence": null,
+      "sourceType": null,
+      "sourceRef": null,
+      "reviewerEdited": false
+    },
+    {
+      "id": 1454,
+      "attachmentId": null,
+      "fieldGroup": "REACTION",
+      "fieldName": "description",
+      "fieldValue": "strong reaction at the injection site - significant redness, swelling, and some pain radiating up her arm",
+      "confidence": 1.0,
+      "sourceType": "EMAIL",
+      "sourceRef": "email",
+      "reviewerEdited": false
+    },
+    {
+      "id": 1455,
+      "attachmentId": null,
+      "fieldGroup": "REACTION",
+      "fieldName": "onset",
+      "fieldValue": "About two hours later",
+      "confidence": 1.0,
+      "sourceType": "EMAIL",
+      "sourceRef": "email",
+      "reviewerEdited": false
+    },
+    {
+      "id": 1456,
+      "attachmentId": null,
+      "fieldGroup": "REACTION",
+      "fieldName": "outcome",
+      "fieldValue": "Did not require hospitalization but was clearly uncomfortable; advised to see physician if it worsened",
+      "confidence": 1.0,
+      "sourceType": "EMAIL",
+      "sourceRef": "email",
+      "reviewerEdited": false
+    },
+    {
+      "id": 1457,
+      "attachmentId": null,
+      "fieldGroup": "SEVERITY",
+      "fieldName": "level",
+      "fieldValue": "other",
+      "confidence": 1.0,
+      "sourceType": "EMAIL",
+      "sourceRef": "email",
+      "reviewerEdited": false
+    },
+    {
+      "id": 1458,
+      "attachmentId": null,
+      "fieldGroup": "NARRATIVE",
+      "fieldName": "narrative",
+      "fieldValue": "A mid-50s female patient received an injection of Zolapamine from a vial that had a broken and discolored seal. Approximately two hours later, she developed significant redness, swelling, and radiating pain at the injection site. She did not require hospitalization and was advised to consult her physician if symptoms worsened.",
+      "confidence": 1.0,
+      "sourceType": "EMAIL",
+      "sourceRef": "email",
+      "reviewerEdited": false
+    },
+    {
+      "id": 1459,
+      "attachmentId": null,
+      "fieldGroup": "QC",
+      "fieldName": "productBatchLot",
+      "fieldValue": "LOT-5820A",
+      "confidence": 1.0,
+      "sourceType": "EMAIL",
+      "sourceRef": "email",
+      "reviewerEdited": false
+    },
+    {
+      "id": 1460,
+      "attachmentId": null,
+      "fieldGroup": "QC",
+      "fieldName": "defectDescription",
+      "fieldValue": "The vial seal was already broken and slightly discolored around the cap.",
+      "confidence": 1.0,
+      "sourceType": "EMAIL",
+      "sourceRef": "email",
+      "reviewerEdited": false
+    },
+    {
+      "id": 1461,
+      "attachmentId": null,
+      "fieldGroup": "QC",
+      "fieldName": "photoMentioned",
+      "fieldValue": "False",
+      "confidence": 1.0,
+      "sourceType": "EMAIL",
+      "sourceRef": "email",
+      "reviewerEdited": false
+    },
+    {
+      "id": 1442,
+      "attachmentId": null,
+      "fieldGroup": "PATIENT",
+      "fieldName": "age",
+      "fieldValue": "mid-50s",
+      "confidence": 1.0,
+      "sourceType": "EMAIL",
+      "sourceRef": "email",
+      "reviewerEdited": false
+    },
+    {
+      "id": 1443,
+      "attachmentId": null,
+      "fieldGroup": "PATIENT",
+      "fieldName": "sex",
+      "fieldValue": "female",
+      "confidence": 1.0,
+      "sourceType": "EMAIL",
+      "sourceRef": "email",
+      "reviewerEdited": false
+    },
+    {
+      "id": 1444,
+      "attachmentId": null,
+      "fieldGroup": "PATIENT",
+      "fieldName": "weightHeight",
+      "fieldValue": "Not stated",
+      "confidence": null,
+      "sourceType": null,
+      "sourceRef": null,
+      "reviewerEdited": false
+    },
+    {
+      "id": 1445,
+      "attachmentId": null,
+      "fieldGroup": "PATIENT",
+      "fieldName": "relevantHistory",
+      "fieldValue": "Not stated",
+      "confidence": null,
+      "sourceType": null,
+      "sourceRef": null,
+      "reviewerEdited": false
+    },
+    {
+      "id": 1446,
+      "attachmentId": null,
+      "fieldGroup": "REPORTER",
+      "fieldName": "name",
+      "fieldValue": "Nora Patterson, RPh",
+      "confidence": 1.0,
+      "sourceType": "EMAIL",
+      "sourceRef": "email",
+      "reviewerEdited": false
+    },
+    {
+      "id": 1447,
+      "attachmentId": null,
+      "fieldGroup": "REPORTER",
+      "fieldName": "role",
+      "fieldValue": "Pharmacist",
+      "confidence": 1.0,
+      "sourceType": "EMAIL",
+      "sourceRef": "email",
+      "reviewerEdited": false
+    },
+    {
+      "id": 1448,
+      "attachmentId": null,
+      "fieldGroup": "REPORTER",
+      "fieldName": "country",
+      "fieldValue": "Not stated",
+      "confidence": null,
+      "sourceType": null,
+      "sourceRef": null,
+      "reviewerEdited": false
+    }
+  ],
+  "reviewActions": []
+}

@@ -1,0 +1,74 @@
+server:
+  port: 8080
+  tomcat:
+    max-swallow-size: 30MB
+
+spring:
+  application:
+    name: smart-inbox-assistant
+
+  # Oracle Database Configuration
+  datasource:
+    url: jdbc:oracle:thin:@${ORACLE_HOST:localhost}:${ORACLE_PORT:1521}/${ORACLE_SERVICE:FREEPDB1}
+    username: ${ORACLE_USER:system}
+    password: ${ORACLE_PASSWORD:YourStrongOraclePassword123!}
+    driver-class-name: oracle.jdbc.OracleDriver
+    hikari:
+      maximum-pool-size: 10
+      minimum-idle: 2
+      idle-timeout: 60000
+      connection-timeout: 10000
+      max-lifetime: 1800000
+      validation-timeout: 3000
+      connection-test-query: SELECT 1 FROM DUAL
+
+  # JPA & Hibernate
+  jpa:
+    database-platform: org.hibernate.dialect.OracleDialect
+    hibernate:
+      ddl-auto: none
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: false
+        jdbc:
+          batch_size: 20
+
+  # File Upload Limits (TRD Section 7: at least 20-25MB)
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 25MB
+      max-request-size: 30MB
+
+  # Asynchronous Task Execution (In-process job queue)
+  task:
+    execution:
+      pool:
+        core-size: 2
+        max-size: 3
+        queue-capacity: 100
+        thread-name-prefix: inbox-worker-
+
+# Application Specific Configuration
+app:
+  # Python FastAPI AI Service URL
+  ai-service:
+    url: ${AI_SERVICE_URL:http://localhost:8000}
+    connect-timeout-ms: 10000
+    read-timeout-ms: 180000
+
+  # Local storage path for ingested attachments
+  storage:
+    path: ${STORAGE_PATH:./storage}
+
+  # Mailbox IMAP Configuration (Gmail)
+  mail:
+    host: ${IMAP_HOST:imap.gmail.com}
+    port: ${IMAP_PORT:993}
+    protocol: imaps
+    username: ${GMAIL_USER:your_test_email@gmail.com}
+    password: ${GMAIL_APP_PASSWORD:your_app_password}
+    folder: INBOX
+    poll-enabled: false
+    poll-cron: "0 */5 * * * *"

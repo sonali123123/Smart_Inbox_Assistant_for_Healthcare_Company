@@ -1,0 +1,250 @@
+<div class="page-container">
+  <!-- Header Section -->
+  <div class="header-section">
+    <div>
+      <h1 class="page-title">Triage & Review Queue</h1>
+      <p class="subtitle">AI-assisted first-pass classification & fact extraction for shared medical mailbox</p>
+    </div>
+    <div class="action-buttons">
+      <button mat-stroked-button color="accent" (click)="exportToCsv()" [disabled]="messages.length === 0" title="Export Queue to CSV">
+        <mat-icon>download</mat-icon> Export CSV
+      </button>
+      <button mat-flat-button color="primary" (click)="triggerIngest()" [disabled]="ingesting">
+        <mat-icon>{{ ingesting ? 'hourglass_empty' : 'sync' }}</mat-icon>
+        {{ ingesting ? 'Polling Mailbox...' : 'Ingest Mailbox' }}
+      </button>
+      <button mat-stroked-button color="warn" (click)="openResetConfirm()" [disabled]="loading || resetting" title="Reset all demo data back to 0">
+        <mat-icon>delete_sweep</mat-icon> Reset Demo Data
+      </button>
+    </div>
+  </div>
+
+  <!-- Clinical KPI Stat Cards -->
+  <div class="kpi-grid">
+    <mat-card class="kpi-card" (click)="filterByUrgency(null)" [class.active-card]="!activeUrgencyFilter && !selectedStatus && !selectedCategory">
+      <div class="kpi-content">
+        <div class="kpi-number">{{ totalCount }}</div>
+        <div class="kpi-label">All Messages</div>
+      </div>
+      <mat-icon class="kpi-icon text-slate">all_inbox</mat-icon>
+    </mat-card>
+
+    <mat-card class="kpi-card critical-kpi" (click)="filterByUrgency('CRITICAL')" [class.active-card]="activeUrgencyFilter === 'CRITICAL'">
+      <div class="kpi-content">
+        <div class="kpi-number text-critical">{{ urgentSaeCount }}</div>
+        <div class="kpi-label">Urgent SAEs</div>
+        <span class="kpi-subtext">Action: &lt;24–48h</span>
+      </div>
+      <mat-icon class="kpi-icon text-critical">warning</mat-icon>
+    </mat-card>
+
+    <mat-card class="kpi-card warning-kpi" (click)="filterByQC()" [class.active-card]="selectedCategory === 'QUALITY_COMPLAINT'">
+      <div class="kpi-content">
+        <div class="kpi-number text-warning">{{ qcCount }}</div>
+        <div class="kpi-label">Quality Complaints</div>
+        <span class="kpi-subtext">Defect investigation</span>
+      </div>
+      <mat-icon class="kpi-icon text-warning">report_problem</mat-icon>
+    </mat-card>
+
+    <mat-card class="kpi-card pending-kpi" (click)="filterByPendingStatus()" [class.active-card]="selectedStatus === 'PENDING_REVIEW'">
+      <div class="kpi-content">
+        <div class="kpi-number text-pending">{{ pendingCount }}</div>
+        <div class="kpi-label">Pending Review</div>
+        <span class="kpi-subtext">Awaiting operator signoff</span>
+      </div>
+      <mat-icon class="kpi-icon text-pending">pending_actions</mat-icon>
+    </mat-card>
+  </div>
+
+  <!-- Filters Card -->
+  <mat-card class="filter-card">
+    <mat-card-content class="filter-row">
+      <mat-form-field appearance="outline" class="search-field">
+        <mat-label>Search sender, subject, summary, product...</mat-label>
+        <input matInput [(ngModel)]="searchQuery" (ngModelChange)="applyFilters()" placeholder="e.g. Nortavex or Anaphylaxis or Dr. Foster">
+        <mat-icon matSuffix>search</mat-icon>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="select-field">
+        <mat-label>Status Filter</mat-label>
+        <mat-select [(ngModel)]="selectedStatus" (selectionChange)="loadMessages()">
+          <mat-option value="">All Statuses</mat-option>
+          <mat-option value="PENDING_REVIEW">Pending Review</mat-option>
+          <mat-option value="REVIEWED">Reviewed</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="select-field">
+        <mat-label>Category Filter</mat-label>
+        <mat-select [(ngModel)]="selectedCategory" (selectionChange)="loadMessages()">
+          <mat-option value="">All Categories</mat-option>
+          <mat-option value="SAFETY_REPORT">Safety Report</mat-option>
+          <mat-option value="QUALITY_COMPLAINT">Quality Complaint</mat-option>
+          <mat-option value="INFO_REQUEST">Info Request</mat-option>
+          <mat-option value="NOT_RELEVANT">Not Relevant</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="select-field">
+        <mat-label>Source Filter</mat-label>
+        <mat-select [(ngModel)]="selectedSourceType" (selectionChange)="loadMessages()">
+          <mat-option value="EMAIL">Shared Mailbox (Emails)</mat-option>
+          <mat-option value="LITERATURE">Literature Articles</mat-option>
+          <mat-option value="">All Sources</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <button mat-icon-button (click)="loadMessages()" title="Refresh List">
+        <mat-icon>refresh</mat-icon>
+      </button>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-progress-bar *ngIf="loading" mode="indeterminate" class="mb-4"></mat-progress-bar>
+
+  <!-- Table Card -->
+  <mat-card class="table-card">
+    <div class="table-responsive">
+      <table mat-table [dataSource]="dataSource" matSort class="messages-table">
+
+        <!-- Urgency Column -->
+        <ng-container matColumnDef="urgency">
+          <th mat-header-cell *matHeaderCellDef width="110">Urgency</th>
+          <td mat-cell *matCellDef="let m">
+            <span class="urgency-badge {{ m.urgencyLevel || 'ROUTINE' }}">
+              <mat-icon inline *ngIf="m.urgencyLevel === 'CRITICAL'">error</mat-icon>
+              {{ m.urgencyLevel || 'ROUTINE' }}
+            </span>
+          </td>
+        </ng-container>
+
+        <!-- ID Column -->
+        <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header width="65">ID</th>
+          <td mat-cell *matCellDef="let m" class="font-mono">#{{ m.id }}</td>
+        </ng-container>
+
+        <!-- Status Column -->
+        <ng-container matColumnDef="status">
+          <th mat-header-cell *matHeaderCellDef width="120">Status</th>
+          <td mat-cell *matCellDef="let m">
+            <span class="badge" [ngClass]="m.status === 'REVIEWED' ? 'high' : 'medium'">
+              {{ m.status === 'PENDING_REVIEW' ? 'Pending' : 'Reviewed' }}
+            </span>
+          </td>
+        </ng-container>
+
+        <!-- Regulatory SLA Column -->
+        <ng-container matColumnDef="sla">
+          <th mat-header-cell *matHeaderCellDef width="130">Reg. SLA</th>
+          <td mat-cell *matCellDef="let m">
+            <span class="sla-chip" [ngClass]="{'urgent': m.urgencyLevel === 'CRITICAL', 'expired': m.slaExpired}" *ngIf="m.slaRemainingText">
+              <mat-icon inline>schedule</mat-icon> {{ m.slaRemainingText }}
+            </span>
+            <span *ngIf="!m.slaRemainingText" class="text-muted">—</span>
+          </td>
+        </ng-container>
+
+        <!-- Categories Column -->
+        <ng-container matColumnDef="categories">
+          <th mat-header-cell *matHeaderCellDef width="200">Classification(s)</th>
+          <td mat-cell *matCellDef="let m">
+            <div *ngFor="let c of m.classifications" class="class-tag-row">
+              <span class="category-badge {{ c.category }}">
+                {{ c.category.replace('_', ' ') }}
+              </span>
+              <span class="badge {{ getConfidenceClass(c.confidence) }}">
+                {{ (c.confidence * 100).toFixed(0) }}%
+              </span>
+            </div>
+            <div *ngIf="!m.classifications || m.classifications.length === 0" class="text-muted">
+              {{ m.status === 'PENDING_REVIEW' ? 'Processing...' : 'No classification' }}
+            </div>
+          </td>
+        </ng-container>
+
+        <!-- Sender Column -->
+        <ng-container matColumnDef="sender">
+          <th mat-header-cell *matHeaderCellDef width="200">Sender</th>
+          <td mat-cell *matCellDef="let m" class="sender-cell">
+            <strong class="sender-name">{{ getSenderName(m.sender) }}</strong>
+            <div class="sender-email text-muted" *ngIf="getSenderEmail(m.sender)">
+              &lt;{{ getSenderEmail(m.sender) }}&gt;
+            </div>
+            <div class="source-tag" *ngIf="m.sourceType === 'LITERATURE'">[Literature Case]</div>
+          </td>
+        </ng-container>
+
+        <!-- Subject & Summary Column -->
+        <ng-container matColumnDef="subject">
+          <th mat-header-cell *matHeaderCellDef>Subject & AI Clinical Summary</th>
+          <td mat-cell *matCellDef="let m">
+            <div class="subject-line">
+              {{ m.subject }}
+              <span class="product-tag" *ngIf="m.productSnippet">Drug: {{ m.productSnippet }}</span>
+            </div>
+            <div class="summary-line text-muted">{{ m.topSummary }}</div>
+          </td>
+        </ng-container>
+
+        <!-- Attachments Column -->
+        <ng-container matColumnDef="attachments">
+          <th mat-header-cell *matHeaderCellDef width="80">PDFs</th>
+          <td mat-cell *matCellDef="let m">
+            <span class="pdf-pill" *ngIf="m.attachmentCount > 0">
+              <mat-icon inline>picture_as_pdf</mat-icon> {{ m.attachmentCount }}
+            </span>
+            <span *ngIf="m.attachmentCount === 0" class="text-muted">—</span>
+          </td>
+        </ng-container>
+
+        <!-- Received Date Column -->
+        <ng-container matColumnDef="receivedDate">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header width="130">Received</th>
+          <td mat-cell *matCellDef="let m">{{ m.receivedDate | date:'shortDate' }}</td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"
+            class="clickable-row"
+            tabindex="0"
+            role="button"
+            (keydown.enter)="openDetail(row)"
+            (click)="openDetail(row)">
+        </tr>
+      </table>
+    </div>
+
+    <!-- Paginator -->
+    <mat-paginator [pageSizeOptions]="[10, 25, 50]" showFirstLastButtons class="table-paginator"></mat-paginator>
+
+    <div *ngIf="!loading && dataSource.filteredData.length === 0" class="empty-state">
+      <mat-icon class="empty-icon">inbox</mat-icon>
+      <h3>No messages in queue</h3>
+      <p>Trigger ingestion from your mailbox or adjust your search / status filters.</p>
+    </div>
+  </mat-card>
+
+  <!-- Reset Confirmation Dialog Modal -->
+  <div class="modal-backdrop" *ngIf="showResetConfirm" (click)="cancelReset()">
+    <mat-card class="modal-card" (click)="$event.stopPropagation()">
+      <mat-card-header>
+        <mat-icon color="warn" class="modal-header-icon">warning</mat-icon>
+        <mat-card-title>Reset Demo Data?</mat-card-title>
+      </mat-card-header>
+      <mat-card-content class="modal-content">
+        <p>This will delete all <strong>messages, extracted clinical facts, PDF tables, AI classifications, and review audit logs</strong> from the database.</p>
+        <p class="modal-subtext">Pre-saved sample outputs and test datasets on disk will <em>not</em> be affected.</p>
+      </mat-card-content>
+      <mat-card-actions align="end" class="modal-actions">
+        <button mat-button (click)="cancelReset()" [disabled]="resetting">Cancel</button>
+        <button mat-flat-button color="warn" (click)="confirmReset()" [disabled]="resetting">
+          <mat-icon>{{ resetting ? 'hourglass_empty' : 'delete_forever' }}</mat-icon>
+          {{ resetting ? 'Resetting...' : 'Confirm & Reset to 0' }}
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>
+

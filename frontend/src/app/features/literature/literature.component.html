@@ -1,0 +1,184 @@
+<div class="page-container">
+  <div class="header-section">
+    <div>
+      <h1 class="page-title">Standalone Literature Screening</h1>
+      <p class="subtitle">Upload medical journal articles to automatically identify, split, and extract individual reportable patient cases</p>
+    </div>
+    <div>
+      <button mat-button routerLink="/messages">
+        <mat-icon>arrow_back</mat-icon> Return to Queue
+      </button>
+    </div>
+  </div>
+
+  <mat-card class="upload-card">
+    <mat-card-header>
+      <mat-card-title>Upload Article PDFs</mat-card-title>
+      <mat-card-subtitle>Select or drag and drop one or more published case-report or journal PDFs to screen</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content class="pt-4">
+      <div class="file-picker-area">
+        <input type="file" multiple accept="application/pdf" (change)="onFilesSelected($event)" id="file-input" class="hidden-input">
+        <label for="file-input" class="upload-dropzone"
+               [class.dragging-over]="isDraggingOver"
+               (dragover)="onDragOver($event)"
+               (dragleave)="onDragLeave($event)"
+               (drop)="onFileDrop($event)">
+          <mat-icon class="upload-icon">{{ isDraggingOver ? 'file_download' : 'cloud_upload' }}</mat-icon>
+          <div class="upload-prompt">{{ isDraggingOver ? 'Drop Article PDFs Here' : 'Drag & drop published article PDFs or click to browse (e.g. A01–A05)' }}</div>
+          <div class="upload-subtext" *ngIf="selectedFiles.length > 0">
+            <strong>{{ selectedFiles.length }} file(s) selected:</strong>
+            <span *ngFor="let f of selectedFiles; let last = last">{{ f.name }}{{ last ? '' : ', ' }}</span>
+          </div>
+        </label>
+      </div>
+
+      <div class="upload-actions">
+        <button mat-raised-button color="primary" (click)="uploadAndScreen()" [disabled]="uploading || selectedFiles.length === 0">
+          <mat-icon>{{ uploading ? 'hourglass_empty' : 'auto_awesome' }}</mat-icon>
+          {{ uploading ? 'Processing & Splitting Cases...' : 'Screen & Split Cases' }}
+        </button>
+      </div>
+
+      <mat-progress-bar *ngIf="uploading" mode="indeterminate" class="mt-4"></mat-progress-bar>
+    </mat-card-content>
+  </mat-card>
+
+  <!-- Screened Cases Tabs (FR-36: Reusing review detail) -->
+  <mat-card class="results-card" *ngIf="cases.length > 0">
+    <mat-card-header class="results-header">
+      <div>
+        <mat-card-title>Screening Results: Batch {{ batchId }}</mat-card-title>
+        <mat-card-subtitle>Identified {{ cases.length }} total records ({{ reportableCases.length }} reportable ICSR cases, {{ excludedArticles.length }} non-reportable review articles)</mat-card-subtitle>
+      </div>
+    </mat-card-header>
+    <mat-card-content class="pt-3">
+      <mat-tab-group>
+
+        <!-- Tab 1: Reportable Patient Cases -->
+        <mat-tab>
+          <ng-template mat-tab-label>
+            <mat-icon inline class="tab-icon text-critical">report</mat-icon>
+            Reportable Patient Cases ({{ reportableCases.length }})
+          </ng-template>
+
+          <div class="tab-table-wrapper">
+            <table mat-table [dataSource]="reportableCases" class="w-100" *ngIf="reportableCases.length > 0; else noReportable">
+              <!-- ID Column -->
+              <ng-container matColumnDef="id">
+                <th mat-header-cell *matHeaderCellDef width="60">ID</th>
+                <td mat-cell *matCellDef="let c">#{{ c.id }}</td>
+              </ng-container>
+
+              <!-- Subject Column -->
+              <ng-container matColumnDef="subject">
+                <th mat-header-cell *matHeaderCellDef width="260">Article & Case Index</th>
+                <td mat-cell *matCellDef="let c">
+                  <strong class="case-subject">{{ c.subject }}</strong>
+                  <span class="badge high">ICSR Candidate</span>
+                </td>
+              </ng-container>
+
+              <!-- Status Column -->
+              <ng-container matColumnDef="status">
+                <th mat-header-cell *matHeaderCellDef width="140">Review Status</th>
+                <td mat-cell *matCellDef="let c">
+                  <span class="badge" [ngClass]="c.status === 'REVIEWED' ? 'high' : 'medium'">
+                    {{ c.status === 'PENDING_REVIEW' ? 'Pending Review' : 'Reviewed' }}
+                  </span>
+                </td>
+              </ng-container>
+
+              <!-- Summary Column -->
+              <ng-container matColumnDef="summary">
+                <th mat-header-cell *matHeaderCellDef>Patient Case Summary</th>
+                <td mat-cell *matCellDef="let c">
+                  <div class="summary-text">{{ c.topSummary }}</div>
+                </td>
+              </ng-container>
+
+              <!-- Action Column -->
+              <ng-container matColumnDef="action">
+                <th mat-header-cell *matHeaderCellDef width="140">Action</th>
+                <td mat-cell *matCellDef="let c">
+                  <button mat-flat-button color="primary" (click)="viewCase(c)">
+                    <mat-icon>rate_review</mat-icon> Review Case
+                  </button>
+                </td>
+              </ng-container>
+
+              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+              <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+
+            <ng-template #noReportable>
+              <div class="empty-tab-state">No reportable patient cases identified in this article batch.</div>
+            </ng-template>
+          </div>
+        </mat-tab>
+
+        <!-- Tab 2: Excluded / Non-Reportable Literature -->
+        <mat-tab>
+          <ng-template mat-tab-label>
+            <mat-icon inline class="tab-icon text-muted">do_not_disturb</mat-icon>
+            Non-Reportable Exclusions ({{ excludedArticles.length }})
+          </ng-template>
+
+          <div class="tab-table-wrapper">
+            <table mat-table [dataSource]="excludedArticles" class="w-100" *ngIf="excludedArticles.length > 0; else noExcluded">
+              <!-- ID Column -->
+              <ng-container matColumnDef="id">
+                <th mat-header-cell *matHeaderCellDef width="60">ID</th>
+                <td mat-cell *matCellDef="let c">#{{ c.id }}</td>
+              </ng-container>
+
+              <!-- Subject Column -->
+              <ng-container matColumnDef="subject">
+                <th mat-header-cell *matHeaderCellDef width="260">Article</th>
+                <td mat-cell *matCellDef="let c">
+                  <strong class="case-subject">{{ c.subject }}</strong>
+                  <span class="badge low">Excluded (Non-Case)</span>
+                </td>
+              </ng-container>
+
+              <!-- Status Column -->
+              <ng-container matColumnDef="status">
+                <th mat-header-cell *matHeaderCellDef width="140">Audit Log Status</th>
+                <td mat-cell *matCellDef="let c">
+                  <span class="badge high">GVP Logged</span>
+                </td>
+              </ng-container>
+
+              <!-- Summary Column -->
+              <ng-container matColumnDef="summary">
+                <th mat-header-cell *matHeaderCellDef>Exclusion Rationale</th>
+                <td mat-cell *matCellDef="let c">
+                  <div class="summary-text">{{ c.topSummary }}</div>
+                </td>
+              </ng-container>
+
+              <!-- Action Column -->
+              <ng-container matColumnDef="action">
+                <th mat-header-cell *matHeaderCellDef width="140">Action</th>
+                <td mat-cell *matCellDef="let c">
+                  <button mat-stroked-button (click)="viewCase(c)">
+                    <mat-icon>visibility</mat-icon> View Log
+                  </button>
+                </td>
+              </ng-container>
+
+              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+              <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+
+            <ng-template #noExcluded>
+              <div class="empty-tab-state">No non-reportable articles found in this batch.</div>
+            </ng-template>
+          </div>
+        </mat-tab>
+
+      </mat-tab-group>
+    </mat-card-content>
+  </mat-card>
+</div>
+

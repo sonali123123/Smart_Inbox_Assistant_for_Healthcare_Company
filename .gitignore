@@ -1,0 +1,49 @@
+# Environment & Secrets
+.env
+*.env.local
+
+# Documentation & Agent instructions (user requested ignore)
+Docs/
+docs/
+AGENTS.md
+agents.md
+.agents/
+
+# Storage (runtime PDF attachment storage)
+storage/
+!storage/.gitkeep
+
+# Local tooling
+.tools/
+
+# Java / Spring Boot
+backend/target/
+backend/.mvn/wrapper/maven-wrapper.jar
+backend/*.iml
+backend/.idea/
+backend/.project
+backend/.classpath
+backend/.settings/
+
+# Python
+ai-service/__pycache__/
+ai-service/*/__pycache__/
+ai-service/*/*/__pycache__/
+ai-service/*.pyc
+ai-service/.venv/
+ai-service/venv/
+ai-service/.pytest_cache/
+ai-service/.env
+
+# Frontend (Angular)
+frontend/node_modules/
+frontend/dist/
+frontend/.angular/
+frontend/*.log
+frontend/npm-debug.log*
+
+# OS / IDE
+.DS_Store
+Thumbs.db
+.vscode/
+*.swp

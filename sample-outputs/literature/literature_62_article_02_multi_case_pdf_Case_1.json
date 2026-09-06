@@ -1,0 +1,225 @@
+{
+  "id": 62,
+  "sourceType": "LITERATURE",
+  "sender": "Literature Article: article_02_multi_case.pdf",
+  "subject": "article_02_multi_case.pdf - Case #1",
+  "receivedDate": "2026-09-05T23:48:20.653983",
+  "bodyText": "A 29-year-old fictional female patient with rheumatoid arthritis began subcutaneous Zolapamine 50 mg weekly. Five days after her third injection, she noticed a 4 cm area of erythema, warmth, and mild swelling at the injection site on her thigh. She reported no fever or systemic symptoms. On examination, the site showed well-demarcated erythema without fluctuance or drainage, consistent with a delayed local hypersensitivity reaction rather than infection. She was treated with a topical corticosteroid and instructed to rotate injection sites more consistently. The reaction resolved over 10 days, and she continued Zolapamine therapy without recurrence at the six-month follow-up. This describes a specific adverse drug reaction to a specific pharmaceutical product in an identifiable patient case.",
+  "messageIdHeader": "lit-case-b6ba7008-b5b8-4bda-8625-94f2dfcd8e6c",
+  "createdAt": "2026-09-05T23:48:20.656575",
+  "status": "PENDING_REVIEW",
+  "classifications": [
+    {
+      "id": 121,
+      "category": "SAFETY_REPORT",
+      "confidence": 0.95,
+      "reason": "The article describes an individual patient experiencing a specific adverse reaction to a pharmaceutical product.",
+      "reviewerStatus": "PENDING"
+    }
+  ],
+  "attachments": [
+    {
+      "id": 41,
+      "filename": "article_02_multi_case.pdf",
+      "contentType": "application/pdf",
+      "pdfType": "ARTICLE",
+      "loggedOnly": false,
+      "summary": null,
+      "tables": [],
+      "images": [],
+      "translation": null,
+      "isPdf": true,
+      "pdf": true
+    }
+  ],
+  "extractedFields": [
+    {
+      "id": 1057,
+      "attachmentId": null,
+      "fieldGroup": "PATIENT",
+      "fieldName": "age",
+      "fieldValue": "29-year-old",
+      "confidence": 1.0,
+      "sourceType": "PDF_PAGE",
+      "sourceRef": "attachment:article_02_multi_case.pdf,page:1",
+      "reviewerEdited": false
+    },
+    {
+      "id": 1058,
+      "attachmentId": null,
+      "fieldGroup": "PATIENT",
+      "fieldName": "sex",
+      "fieldValue": "Female",
+      "confidence": 1.0,
+      "sourceType": "PDF_PAGE",
+      "sourceRef": "attachment:article_02_multi_case.pdf,page:1",
+      "reviewerEdited": false
+    },
+    {
+      "id": 1059,
+      "attachmentId": null,
+      "fieldGroup": "PATIENT",
+      "fieldName": "weightHeight",
+      "fieldValue": "Not stated",
+      "confidence": null,
+      "sourceType": "PDF_PAGE",
+      "sourceRef": "attachment:41,page:1",
+      "reviewerEdited": false
+    },
+    {
+      "id": 1060,
+      "attachmentId": null,
+      "fieldGroup": "PATIENT",
+      "fieldName": "relevantHistory",
+      "fieldValue": "Rheumatoid arthritis",
+      "confidence": 1.0,
+      "sourceType": "PDF_PAGE",
+      "sourceRef": "attachment:article_02_multi_case.pdf,page:1",
+      "reviewerEdited": false
+    },
+    {
+      "id": 1061,
+      "attachmentId": null,
+      "fieldGroup": "REPORTER",
+      "fieldName": "name",
+      "fieldValue": "R. Alvi, K. Sundstrom",
+      "confidence": 1.0,
+      "sourceType": "PDF_PAGE",
+      "sourceRef": "attachment:article_02_multi_case.pdf,page:1",
+      "reviewerEdited": false
+    },
+    {
+      "id": 1062,
+      "attachmentId": null,
+      "fieldGroup": "REPORTER",
+      "fieldName": "role",
+      "fieldValue": "Author",
+      "confidence": 1.0,
+      "sourceType": "PDF_PAGE",
+      "sourceRef": "attachment:article_02_multi_case.pdf,page:1",
+      "reviewerEdited": false
+    },
+    {
+      "id": 1063,
+      "attachmentId": null,
+      "fieldGroup": "REPORTER",
+      "fieldName": "country",
+      "fieldValue": "Not stated",
+      "confidence": null,
+      "sourceType": "PDF_PAGE",
+      "sourceRef": "attachment:41,page:1",
+      "reviewerEdited": false
+    },
+    {
+      "id": 1064,
+      "attachmentId": null,
+      "fieldGroup": "PRODUCT",
+      "fieldName": "name",
+      "fieldValue": "Zolapamine",
+      "confidence": 1.0,
+      "sourceType": "PDF_PAGE",
+      "sourceRef": "attachment:article_02_multi_case.pdf,page:1",
+      "reviewerEdited": false
+    },
+    {
+      "id": 1065,
+      "attachmentId": null,
+      "fieldGroup": "PRODUCT",
+      "fieldName": "dose",
+      "fieldValue": "50 mg weekly",
+      "confidence": 1.0,
+      "sourceType": "PDF_PAGE",
+      "sourceRef": "attachment:article_02_multi_case.pdf,page:1",
+      "reviewerEdited": false
+    },
+    {
+      "id": 1066,
+      "attachmentId": null,
+      "fieldGroup": "PRODUCT",
+      "fieldName": "route",
+      "fieldValue": "Subcutaneous",
+      "confidence": 1.0,
+      "sourceType": "PDF_PAGE",
+      "sourceRef": "attachment:article_02_multi_case.pdf,page:1",
+      "reviewerEdited": false
+    },
+    {
+      "id": 1067,
+      "attachmentId": null,
+      "fieldGroup": "PRODUCT",
+      "fieldName": "startDate",
+      "fieldValue": "Not stated",
+      "confidence": null,
+      "sourceType": "PDF_PAGE",
+      "sourceRef": "attachment:41,page:1",
+      "reviewerEdited": false
+    },
+    {
+      "id": 1068,
+      "attachmentId": null,
+      "fieldGroup": "PRODUCT",
+      "fieldName": "stopDate",
+      "fieldValue": "Not stated",
+      "confidence": null,
+      "sourceType": "PDF_PAGE",
+      "sourceRef": "attachment:41,page:1",
+      "reviewerEdited": false
+    },
+    {
+      "id": 1069,
+      "attachmentId": null,
+      "fieldGroup": "REACTION",
+      "fieldName": "description",
+      "fieldValue": "Injection-site reaction, 4 cm area of erythema, warmth, and mild swelling at the injection site",
+      "confidence": 1.0,
+      "sourceType": "PDF_PAGE",
+      "sourceRef": "attachment:article_02_multi_case.pdf,page:1",
+      "reviewerEdited": false
+    },
+    {
+      "id": 1070,
+      "attachmentId": null,
+      "fieldGroup": "REACTION",
+      "fieldName": "onset",
+      "fieldValue": "Five days after her third injection",
+      "confidence": 1.0,
+      "sourceType": "PDF_PAGE",
+      "sourceRef": "attachment:article_02_multi_case.pdf,page:1",
+      "reviewerEdited": false
+    },
+    {
+      "id": 1071,
+      "attachmentId": null,
+      "fieldGroup": "REACTION",
+      "fieldName": "outcome",
+      "fieldValue": "Resolved over 10 days",
+      "confidence": 1.0,
+      "sourceType": "PDF_PAGE",
+      "sourceRef": "attachment:article_02_multi_case.pdf,page:1",
+      "reviewerEdited": false
+    },
+    {
+      "id": 1072,
+      "attachmentId": null,
+      "fieldGroup": "SEVERITY",
+      "fieldName": "level",
+      "fieldValue": "Mild swelling, non-serious",
+      "confidence": 0.9,
+      "sourceType": "PDF_PAGE",
+      "sourceRef": "attachment:article_02_multi_case.pdf,page:1",
+      "reviewerEdited": false
+    },
+    {
+      "id": 1073,
+      "attachmentId": null,
+      "fieldGroup": "NARRATIVE",
+      "fieldName": "narrative",
+      "fieldValue": "A 29-year-old fictional female patient with rheumatoid arthritis began subcutaneous Zolapamine 50 mg weekly. Five days after her third injection, she noticed a 4 cm area of erythema, warmth, and mild swelling at the injection site on her thigh. She reported no fever or systemic symptoms. On examination, the site showed well-demarcated erythema without fluctuance or drainage, consistent with a delayed local hypersensitivity reaction rather than infection. She was treated with a topical corticosteroid and instructed to rotate injection sites more consistently. The reaction resolved over 10 days, and she continued Zolapamine therapy without recurrence at the six-month follow-up.",
+      "confidence": 1.0,
+      "sourceType": "PDF_PAGE",
+      "sourceRef": "attachment:article_02_multi_case.pdf,page:1",
+      "reviewerEdited": false
+    }
+  ],
+  "reviewActions": []
+}

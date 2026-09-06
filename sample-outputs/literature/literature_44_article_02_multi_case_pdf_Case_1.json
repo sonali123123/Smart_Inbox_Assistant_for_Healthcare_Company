@@ -1,0 +1,37 @@
+{
+  "id": 44,
+  "sourceType": "LITERATURE",
+  "sender": "Literature Article: article_02_multi_case.pdf",
+  "subject": "article_02_multi_case.pdf - Case #1",
+  "receivedDate": "2026-09-05T15:44:42.515847",
+  "bodyText": "A 29-year-old female patient with a history of rheumatoid arthritis was prescribed subcutaneous Zolapamine at a dose of 50 mg weekly. Five days following her third injection, she developed an adverse reaction characterized by a 4 cm area of erythema, warmth, and mild swelling at the thigh injection site. She experienced no fever or other systemic symptoms during this episode. Upon clinical examination, a well-demarcated area of redness without fluctuance or drainage was observed, which was diagnosed as a delayed local hypersensitivity reaction. The patient was treated with a topical corticosteroid and received instructions to rotate her injection sites more consistently. The reaction successfully resolved over a 10-day period. She was able to continue her Zolapamine therapy without any recurrence of symptoms at a six-month follow-up evaluation.",
+  "messageIdHeader": "lit-case-d91c887c-7cd8-40a0-9109-04947f7ba292",
+  "createdAt": "2026-09-05T15:44:42.516389",
+  "status": "PENDING_REVIEW",
+  "classifications": [
+    {
+      "id": 82,
+      "category": "NOT_RELEVANT",
+      "confidence": 0.9,
+      "reason": "The article describes a specific identifiable patient who experienced a localized hypersensitivity reaction to a named pharmaceutical product.",
+      "reviewerStatus": "PENDING"
+    }
+  ],
+  "attachments": [
+    {
+      "id": 22,
+      "filename": "article_02_multi_case.pdf",
+      "contentType": "application/pdf",
+      "pdfType": "ARTICLE",
+      "loggedOnly": false,
+      "summary": null,
+      "tables": [],
+      "images": [],
+      "translation": null,
+      "isPdf": true,
+      "pdf": true
+    }
+  ],
+  "extractedFields": [],
+  "reviewActions": []
+}
